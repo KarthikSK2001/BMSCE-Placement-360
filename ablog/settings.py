@@ -25,7 +25,7 @@ SECRET_KEY = '(o%y^j1ba$-p9@9ld5t(dmj4ersvf&@+^!a08xi$xse%exp@ar'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','bmsceplacement360.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','bmsceplacement-360.herokuapp.com']
 
 
 # Application definition
