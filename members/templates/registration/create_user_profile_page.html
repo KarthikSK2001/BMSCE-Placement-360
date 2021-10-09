@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %}Create A New Profile Page{% endblock %}
+{% block content %}
+<title>
+       Create Profile | Placement 360
+</title>
+<style>
+.info{
+	margin-top:1rem;
+}
+label{
+	font-weight:bolder
+}
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: #fff;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888);
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+h1.second {
+        font-weight: bolder;
+		color:black;
+		font-size:23px;
+		display:inline
+    }
+    #details
+	 {
+        font-weight: bolder;
+		color:#0088cc;
+		font-size:22px;
+		display:inline;
+
+    }
+    h1.second span {
+        position: relative;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border-bottom: 1px solid mediumseagreen;color:black
+    }
+    
+    h1.second span:after {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% - 1px);
+        margin-left: -10px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+	} 
+</style>
+    
+{% if user.is_authenticated %}
+	<h1 class="second"><span>CREATE YOUR PROFILE HERE</span></h1>
+	<br/><br/>
+
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<p><label for="id_bio">About You <span style="color: crimson;">*</span></label> <textarea  name="bio" class="form-control"cols="40" rows="10" required id="id_bio" placeholder="Type In Here..." style="margin-top:1rem;margin-bottom:0.5rem"></textarea></p>
+ <p class="info"><span style="color: crimson;">*</span> (Here you can type in something about yourself..) </p>
+ <p><label for="id_profile_pic">Upload Profile Picture <span style="color: crimson;">*</span></label> <input  type="file" name="profile_pic" accept="image/*" id="id_profile_pic"></input></p>
+ <p class="info"><span style="color: crimson;">*</span> (Here upload your profile picture..) </p>
+ <p><label for="id_website_url">Portfolio <span style="color: crimson;">*</span></label> <input  name="website_url" class="form-control"cols="40" rows="10" required id="id_website_url" placeholder="Type In Here..." ></input></p>
+ <p class="info"><span style="color: crimson;">*</span> (Enter your Portfolio Link Here..) </p>
+ <p><label for="id_linkedin_url">LinkedIn <span style="color: crimson;">*</span></label> <input  name="linkedin_url" class="form-control"cols="40" rows="10" required id="id_linkedin_url" placeholder="Type In Here..." ></input></p>
+ <p class="info"><span style="color: crimson;">*</span> (Enter your LinkedIn Profile Link Here...) </p>
+<p><label for="id_email">Email <span style="color: crimson;">*</span></label> <input  name="email" class="form-control"cols="40" rows="10" required id="id_email" placeholder="Type In Here..." ></input></p>
+ <p class="info"><span style="color: crimson;">*</span> (Enter your Email id Here...) </p>
+
+
+ <button class="btn btn-primary" style="margin-top:1rem">Create My Profile</button>
+
+	</div>
+
+	
+
+{% else %}
+
+You're not allowed here! (and you know it...)
+
+{% endif %}
+
+
+
+{% endblock %}

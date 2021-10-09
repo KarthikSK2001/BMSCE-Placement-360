@@ -1,0 +1,381 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block company %}{{ postint.company }}{% endblock %}
+
+
+{% block content %}
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+<title>
+{{ postint.company }} | Placement 360
+</title>
+<style>
+ h1.second {
+        font-weight: bolder;
+		color:black;
+		font-size:22px;
+		display:inline;
+		text-transform:uppercase;
+    }
+    #details
+	 {
+        font-weight: bolder;
+		color:#0088cc;
+		font-size:22px;
+		display:inline;
+
+    }
+    h1.second span {
+        position: relative;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border-bottom: 1px solid mediumseagreen;color:black
+    }
+    
+    h1.second span:after {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% - 1px);
+        margin-left: -10px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border-top: 1px solid mediumseagreen;
+    }
+	.card {
+			margin: 0 auto; /* Added */
+			float: none; /* Added */
+			margin-bottom: 10px; /* Added */
+	}
+	h4,span{
+		color:black;
+	}table { 
+		width: 750px; 
+		border-collapse: collapse; 
+		margin:50px auto;
+		}
+
+	/* Zebra striping */
+	tr:nth-of-type(odd) { 
+		background: #eee; 
+		}
+
+	th { 
+		background: #3498db; 
+		color: white; 
+		font-weight: bold; 
+		}
+
+	td, th { 
+		padding: 10px; 
+		border: 1px solid #ccc; 
+		text-align: left; 
+		font-size: 18px;
+		}
+
+
+p,td{
+	color:black;
+	font-weight:bold
+}
+#like_counter{
+	color:white;
+	font-weight:bold
+}
+
+.col-sm-6 {
+  background: #a4a4a4;
+}
+
+
+
+.p {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.p a {
+  text-decoration: underline;
+  color: blue;
+}
+#btnSearch,
+#btnClear{
+    display: inline-block;
+    vertical-align: top;
+	font-weight:bolder;
+	margin:3px;
+}
+button{
+	font-weight:bolder
+}
+#name_details{
+	font-weight:bolder;
+	color:black;
+	background-color:lightgrey;
+	padding:3px;
+
+	border-radius:10px
+}
+#msg_details{
+	font-weight:bold;
+	color:black;
+	margin-bottom:0.5rem;
+	font-size:16px
+}
+.card>companylogo{
+	 width:230px;
+    height:280px
+}
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+.card-img {
+	width:100px;
+	height:100px
+}
+  #commentimg{
+	  display:none
+  }
+  #name_details{
+	margin-bottom:0.3rem
+  }
+  #msg_details{
+	font-weight:bold;
+	color:black;
+	margin-bottom:1rem
+}
+}
+</style>
+
+	{% comment %} <h1>{{ postint.company }}</h1> {% endcomment %}
+	<h1 class="second"><span> {{ postint.company }}</span></h1>
+<br><br>
+	<small style="font-weight:bolder;margin-left:0.6rem;margin-bottom:1rem">By: 
+	<span id="name_details" style="padding:0.3rem">	{{ postint.author.first_name }} 
+		{{ postint.author.last_name }}</span> - 
+		{{ postint.post_date }}  
+		
+		{% if user.is_authenticated %}
+			{% if user.id == postint.author.id %}
+				- <a href="{% url 'update_post_int' postint.pk %}">(Edit)</a>
+
+				<a href="{% url 'delete_post_int' postint.pk %}">(Delete)</a>
+			{% endif %}
+		{% endif %}
+	</small><br/><br/>
+
+	
+	<div class="card" style="width: 20rem;">
+  {% if postint.Company_Logo %}
+		<img src="{{ postint.Company_Logo.url }}" style='box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;'>
+	{% endif %}
+
+ 
+</div>
+<center>
+<div class="col-xl-8 col-md-12">
+	<div class="card overflow-hidden">
+		 <div class="card overflow-hidden">
+       		<div class="card-content">
+<table style='margin-top:-0.3rem'>
+  <thead >
+    <tr>
+	  <th style='width:100%;margin-top:-1rem'>Student Placed</th>
+  </thead>
+  <tbody>
+    <tr>
+	    <td data-column="Student Placed">{{postint.student_Name}}</td>
+    </tr>    
+  </tbody>
+</table>
+<table style='margin-top:-3.2rem'>
+  <thead style='width:50%'>
+    <tr style='width:50%'>
+     <th style='width:50%'>Hiring Type </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td data-column="Hiring Type">{{postint.hiring_type}}</td>      
+    </tr>    
+  </tbody>
+</table>  
+<table style='margin-top:-3.2rem'>
+  <thead>
+    <tr>
+	  <th style='width:100%'>Compensation</th>
+  </thead>
+  <tbody>
+    <tr>
+	    <td data-column="Compensation">{{postint.compensation_Details}}</td>
+    </tr>    
+  </tbody>
+</table >
+<table style='margin-top:-3.2rem'>
+  <thead>
+    <tr>
+	  <th style='width:100%'>No. Hired with Type</th>
+  </thead>
+  <tbody>
+    <tr>
+	    <td data-column="No. Hired with Type">{{postint.number_hired_with_role}}  </td>
+    </tr>    
+  </tbody>
+</table>
+<table style='margin-top:-3.2rem;margin-bottom:-0.2rem'>
+  <thead>
+    <tr>
+	  <th style='width:100%'>Author</th>
+  </thead>
+  <tbody>
+    <tr>
+	     <td data-column="Author">{{postint.author.first_name}} {{postint.author.last_name}}</td>
+    </tr>    
+  </tbody>
+</table>
+
+	</div>  
+</div>
+</div>
+</div>
+</center>
+<div class="card text" style="padding:1rem;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;'">
+ <h1 class="second text-center"  ><span > Interview Rounds With Detailed Description</span></h1><hr>
+  <div style="font-weight:bolder"> {{ postint.Interview_Rounds_with_detailed_description|safe }}</div>
+
+</div>
+<div class="card text" style="padding:1rem;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;'">
+ <h1 class="second text-center"  ><span > Additional Topics And Students Overall Experience</span></h1><hr>
+  {{ postint.Additional_Topics|safe }}
+
+</div>
+
+	
+	
+	<div class="card p-3" style='box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;'>
+	<form method="POST" action="{% url 'like_post_int' postint.pk %}">
+		{% csrf_token %}
+	
+	{% if user.is_authenticated %}
+		{% if liked %}
+		<button type="submit" name="postint_id" value="{{ postint.id }}" class="btn btn-danger"><i class="fas fa-thumbs-down"></i></button>
+			
+		{% else %}	
+		<button type="submit" name="postint_id" value="{{ postint.id }}" class="btn btn-success"><i class="fas fa-thumbs-up"></i></button>
+			
+		{% endif %}
+	{% else %}
+		<small><a href="{% url 'login' %}">Login</a> to like</small>
+	{% endif %}
+			<button type="submit" name="postint_id" value="{{ postint.id }}" class="btn btn-primary pull-right" id="like_counter">{{ total_likes_int }}  Likes <span style="color: #ff9999">&#10084; </span></button>
+
+	
+	
+	</form>
+
+
+</div>
+<h1 class="second" ><span style="margin-bottom:1rem">AUTHOR'S PROFILE</span></h1>
+ <br>
+<div class="card p-2" style='box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;'>
+
+  <div class="row">
+    <div class="col-sm-2">
+    {% if postint.author.profile.profile_pic %}
+     <center><img src="{{ postint.author.profile.profile_pic.url }}" class="card-img rounded-circle" height="150" width="140"></center> 
+
+{% else %}
+	<img src="{% static 'theblog/images/default_profile_pic.png' %}" class="card-img">
+{% endif %}
+    </div>
+    <div class="col-sm-10 other">
+  <div class="card-body">
+        <h5 class="card-title" style="font-weight:bolder">
+        	{{ postint.author.first_name }} 
+			{{ postint.author.last_name }}
+		</h5>
+<div class="row">
+    <div class="col-sm-12">
+
+         <a href="{% url 'show_profile_page' postint.author.profile.id %}"><button id="btnClear" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="btnClear_Click" >Profile</button></a>
+		
+        {% if postint.author.profile.website_url %}   
+         <a href="{{ postint.author.profile.website_url }}"><button id="btnClear" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="btnClear_Click" >Portfolio</button></a>
+		{% endif %}
+		{% if postint.author.profile.linkedin_url %}   
+         <a href="{{ postint.author.profile.linkedin_url }}"><button id="btnClear" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="btnClear_Click" >LinkedIn</button></a>
+		{% endif %} 
+     </div>
+</div>
+
+<hr>
+
+ <h5 class="card-title" style="font-weight:bolder">
+        About {{ postint.author.first_name }} 
+			{{ postint.author.last_name }}
+		</h5>
+<p class="card-text">
+        	{{ postint.author.profile.bio }}
+        </p>
+		<br>
+         <h6 class="card-title" style="font-weight:bolder">
+        {% if postint.author.profile.email %}   
+         Email Id - <a style="text-decoration:underline" href="mailto:{{ postint.author.profile.email }}">{{ postint.author.profile.email }}</a>
+		{% endif %}
+		</h5>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+
+<h1 class="second" ><span style="margin-bottom:1rem">COMMENTS SECTION</span></h1>
+ <br>
+
+ <a href="{% url 'add_comment_int' postint.pk %}"><button class="btn btn-primary" style="margin-top:1rem;font-weight:bolder" >POST COMMENT </button></a>
+ <br><br/>
+ 
+<div class="card p-2" style='box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;' >
+{% for commentint in postint.commentsint.all %}
+  <div class="row">
+    <div class="col-sm-2">
+     {% if postint.author.profile.profile_pic %}
+     <center><img src="{{ postint.author.profile.profile_pic.url }}" class="card-img rounded-circle" height="120" width="100" style="width:90px;height:90px" id="commentimg"></center> 
+
+{% else %}
+	<center><img src="{% static 'theblog/images/default_profile_pic.png' %}" class="card-img rounded-circle" height="130" width="10" style="width:90px;height:90px" id="commentimg"></center>
+{% endif %}
+    </div>
+    <div class="col-sm-10 other">
+  <div class="card-body" style="font-size:16px">
+        <h5 class="card-title" style="font-weight:bolder;font-size:16px">
+        <span id="name_details" style="	margin-right:0.2rem">{{ postint.author.first_name }} 
+			{{ postint.author.last_name }} </span> - <span id="msg_details" style="font-size:16px"> {{ commentint.date_added }} </spam>
+		</h5>
+
+<h5 class="card-text" style="font-weight:bolder;font-size:16px">
+        	{{ commentint.body }} 
+		</h5>
+
+
+        
+      </div>
+    </div>
+  </div>{% endfor %}
+</div>
+
+<br/>
+<br/>
+
+{% endblock %}

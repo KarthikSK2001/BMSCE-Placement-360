@@ -1,0 +1,689 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+
+{% block content %}
+<title>
+        Cyber Security | Placement 360
+</title>
+<style>
+
+.timeline {
+  position: relative;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.timeline .timeline-container {
+  position: relative;
+  width: 100%;
+}
+
+.timeline .timeline-end,
+.timeline .timeline-start,
+.timeline .timeline-year {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.timeline .timeline-end p,
+.timeline .timeline-start p,
+.timeline .timeline-year p {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 30px 0;
+  text-align: center;
+  background: linear-gradient(#4F84C4, #00539C);
+  border-radius: 100px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.timeline .timeline-year {
+  margin: 30px 0;
+}
+
+.timeline .timeline-continue {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+}
+
+.timeline .timeline-continue::after {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  background: #4F84C4;
+}
+
+.timeline .row.timeline-left,
+.timeline .row.timeline-right .timeline-date {
+  text-align: right;
+}
+
+.timeline .row.timeline-right,
+.timeline .row.timeline-left .timeline-date {
+  text-align: left;
+}
+
+.timeline .timeline-date {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 41px 0 0 0;
+}
+
+.timeline .timeline-date::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 45px;
+  background: linear-gradient(#4F84C4, #00539C);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.timeline .row.timeline-left .timeline-date::after {
+  left: -7px;
+}
+
+.timeline .row.timeline-right .timeline-date::after {
+  right: -7px;
+}
+
+.timeline .timeline-box,
+.timeline .timeline-launch {
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.timeline .timeline-launch {
+  width: 100%;
+  margin: 15px 0;
+  padding: 0;
+  border: none;
+  text-align: center;
+  background: transparent;
+}
+
+.timeline .timeline-box::after,
+.timeline .timeline-box::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline .row.timeline-left .timeline-box::after,
+.timeline .row.timeline-left .timeline-box::before {
+  left: 100%;
+}
+
+.timeline .row.timeline-right .timeline-box::after,
+.timeline .row.timeline-right .timeline-box::before {
+  right: 100%;
+}
+
+.timeline .timeline-launch .timeline-box::after,
+.timeline .timeline-launch .timeline-box::before {
+  left: 50%;
+  margin-left: -10px;
+}
+
+.timeline .timeline-box::after {
+  top: 26px;
+  border-color: transparent transparent transparent #ffffff;
+  border-width: 10px;
+}
+
+.timeline .timeline-box::before {
+  top: 25px;
+  border-color: transparent transparent transparent #dddddd;
+  border-width: 11px;
+}
+
+.timeline .row.timeline-right .timeline-box::after {
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.timeline .row.timeline-right .timeline-box::before {
+  border-color: transparent #dddddd transparent transparent;
+}
+
+.timeline .timeline-launch .timeline-box::after {
+  top: -20px;
+  border-color: transparent transparent #dddddd transparent;
+}
+
+.timeline .timeline-launch .timeline-box::before {
+  top: -19px;
+  border-color: transparent transparent #ffffff transparent;
+  border-width: 10px;
+  z-index: 1;
+}
+
+.timeline .timeline-box .timeline-icon {
+  position: relative;
+  width: 40px;
+  height: auto;
+  float: left;
+}
+
+.timeline .timeline-icon i {
+  font-size: 25px;
+  color: #4F84C4;
+}
+
+.timeline .timeline-box .timeline-text {
+  position: relative;
+  width: calc(100% - 40px);
+  float: left;
+}
+
+.timeline .timeline-launch .timeline-text {
+  width: 100%;
+}
+
+.timeline .timeline-text h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.timeline .timeline-text p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline .timeline-continue::after {
+    left: 40px;
+  }
+
+  .timeline .timeline-end,
+  .timeline .timeline-start,
+  .timeline .timeline-year,
+  .timeline .row.timeline-left,
+  .timeline .row.timeline-right .timeline-date,
+  .timeline .row.timeline-right,
+  .timeline .row.timeline-left .timeline-date,
+  .timeline .timeline-launch {
+    text-align: left;
+  }
+
+  .timeline .row.timeline-left .timeline-date::after,
+  .timeline .row.timeline-right .timeline-date::after {
+    left: 47px;
+  }
+
+  .timeline .timeline-box,
+  .timeline .row.timeline-right .timeline-date,
+  .timeline .row.timeline-left .timeline-date {
+    margin-left: 55px;
+  }
+
+  .timeline .timeline-launch .timeline-box {
+    margin-left: 0;
+  }
+
+  .timeline .row.timeline-left .timeline-box::after {
+    left: -20px;
+    border-color: transparent #ffffff transparent transparent;
+  }
+
+  .timeline .row.timeline-left .timeline-box::before {
+    left: -22px;
+    border-color: transparent #dddddd transparent transparent;
+  }
+
+  .timeline .timeline-launch .timeline-box::after,
+  .timeline .timeline-launch .timeline-box::before {
+    left: 30px;
+    margin-left: 0;
+  }
+}
+#list{list-style-type: decimal;padding:5px}
+
+    li{
+        font-weight:700;
+    }
+    .card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+
+
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px; box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+   
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center; text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;
+    margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #006fac;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+
+a{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+</style>
+<div class="title">
+ <h1 class="second text-center"><span> CYBER SECURITY ROADMAPS AND CERTIFICATIONS</span></h1><br>
+</div>
+<div class="timeline">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="timeline-container">
+          <div class="timeline-end">
+            <p>Start</p>
+          </div>
+          <div class="timeline-continue">
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+               Beginner Jobs
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Cybersecurity Specialist</li>
+                    <li> Cyber Crime Analyst</li>
+                    <li>Incident Responder</li>
+                    <li>IT Auditor </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                  Intermediate Jobs
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Cybersecurity Analyst</li>
+                    <li>Cybersecurity Consultant</li>
+                    <li>Penetration Tester</li>
+                   
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                 Intermediate Jobs
+                </p>
+              </div>
+            </div>
+
+ 
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                   Advanced Jobs
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Cybersecurity Manager</li>
+                    <li>Cybersecurity Engineer</li>
+                    <li>Cybersecurity Architect</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+           
+          </div>
+          <div class="timeline-start">
+            <p>End</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card text-center">
+ 
+  <div class="card-body">
+    <h5 class="card-title" style="color:#0088cc;font-weight:bolder;margin-top:1rem">Certifications In Cybersecurity</h5>
+    <p class="card-text">But in order to be hired for these types of positions, managers
+usually require certifications. Almost every career path has
+different certification requirements, so this can get confusing when
+you’re trying to decide which certifications you want to pursue.
+Here’s a breakdown of some certifications to consider based
+on your cybersecurity career level:</p>
+
+  </div>
+  <div class="card-footer text">
+  Do Check Below Certifications
+  </div>
+</div>
+
+<div class="timeline">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="timeline-container">
+          <div class="timeline-end">
+            <p>Start</p>
+          </div>
+          <div class="timeline-continue">
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+               Beginner 
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                   <ul id="list">
+                    <li>CompTIA IT Fundamentals</li>
+                    <li> CompTIA A+</li>
+                    <li>CompTIA Security+</li>
+                    <li>Microsoft Technology Associate (MTA) </li>
+                    <li> Linux Essential</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                  Intermediate 
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>(CCNA) Security </li>
+                    <li> CompTIA CySA+</li>
+                    <li> CompTIA Project+</li>
+                    <li>Certified Ethical Hacker (CEH) </li>
+                    <li> Microsoft Certified Solutions Associate (MCSA) </li>
+                    </ul>
+                   
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                 Intermediate 
+                </p>
+              </div>
+            </div>
+
+ 
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                   Advanced 
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                     <ul id="list">
+                    <li> ITIL Master</li>
+                    <li>CompTIA Advanced Security Practitioner (CASP)</li>
+                    <li>CISSP Security</li>
+                    <li>Certified Cloud Security Professional (CCSP)</li>
+                    <li>Microsoft Certified Solutions Expert (MCSE)</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+           
+          </div>
+          <div class="timeline-start">
+            <p>End</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                 https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Useful Cybersecurity Resources</h3><hr>
+                    <p class="card-description">Web Penetration Testing
+  <ul>
+ 
+ <li><span style="font-weight:bolder;color:white">1. Online Resources </span> - The following are the resources which are used the most.
+  <div class="card-button text-center">
+     <a href="https://www.hacker101.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Hacker101</button></a>
+
+  
+     <a href="https://www.bugcrowd.com/hackers/bugcrowd-university/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Bugcrowd University</button></a>
+
+
+     <a href="https://www.hackingarticles.in/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Hacking Articles</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">2. <i class="fa fa-youtube-play" style="color:white"></i> Youtuber's to follow </span>- Most Followed Youtube Channels
+  <div class="card-button text-center">
+     <a href="https://www.youtube.com/c/Nahamsec" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Nahamsec </button></a>
+ 
+
+     <a href="https://www.youtube.com/c/STOKfredrik/videos" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">STOK </button></a>
+
+  
+     <a href="https://www.youtube.com/channel/UCS82DNnKOhXHcGKxGzQvNSQ" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Hacktify </button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">3. Some Courses </span> - Follow these courses to master Concepts
+  <div class="card-button text-center">
+     <a href="https://learn.hacktify.in/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Hacktify</button></a>
+     <a href="https://www.udemy.com/course/practical-ethical-hacking/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Cyber Mentor's Course</button></a>
+ 
+ </div>
+</li>
+
+  </ul>
+
+<br/></p>
+                    
+                </div>
+            </div>
+        </div>
+{% endblock %}

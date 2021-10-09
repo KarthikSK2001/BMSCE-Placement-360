@@ -1,0 +1,668 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+<title>
+        Resources | Placement 360
+    </title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: white;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; color: white;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888); color: white;
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+
+
+textarea { font-size: 16px; 
+font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+   body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  min-height: calc(100vh - var(--vh-offset, 0px));
+
+  overflow-x: hidden;
+  font-weight: 400;
+  top: 0;
+  color: #252525;
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+}
+
+
+
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  align-self: flex-start;
+}
+
+
+
+.container > div{
+  
+   
+}
+
+.card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+.card:hover {
+  box-shadow: 0 11px 11px 0 rgba(0, 0, 0,.16);
+  transform: translateY(-5px);
+}
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px;
+   box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+   
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center; text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #03bfbc;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+.card-social li a{
+    font-size: 20px;
+    color:#b3b8cd;
+}
+
+.card-social li a:hover{
+    color: #03bfbc;
+}
+a{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+</style>
+
+</head>
+<h1 class="second"><span> RESOURCES TO CRACK CODING INTERVIEWS </span></h1><br><br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name" style=''>Aim: Companies such as Nutanix, Atlassian, Intuit </h3><hr>
+                    <p class="card-description">Focus on Trees, Graphs (BFD +DFS), Dynamic Programming (DP)
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://labuladong.gitbook.io/algo-en/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Learn Here</button></a>
+                        
+                    </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Learn Trees and Dynamic Programming </h3><hr>
+                    <p class="card-description">Learn From <i class="fa fa-youtube-play" style="color:white"></i> Tushar Roy - Coding made simple
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://www.youtube.com/results?search_query=tushar+roy" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Learn Here</button></a>
+                        
+                    </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Interviews Preparation Videos</h3><hr>
+                    <p class="card-description">Workshops and Best Practices
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://www.youtube.com/watch?v=XKu_SEDAykw&feature=youtu.be" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">How to Work At Google</button></a>
+                        <a href="https://youtu.be/MyFxMpKn7yk" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Technical Interview Workshop</button></a>
+                        <a href="https://youtu.be/ko-KkSmp-Lk" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Interview Best Practices</button></a>
+                        
+                    </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Data Structures and Algorithms</h3><hr>
+                    <p class="card-description">Few Important Resources and Links
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://techiedelight.quora.com/500-Data-Structures-and-Algorithms-practice-problems-and-their-solutions?share=1&utm_medium=email&utm_source=hackernewsletter&utm_term=code" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">500 DSA Questions</button></a>
+                        <a href="http://www.geeksforgeeks.org/top-10-algorithms-in-interview-questions/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Top 10 Algorithms</button></a>
+                        <a href="http://bigocheatsheet.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Big O Cheat Sheet</button></a>
+                        
+                    </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Coding Practice - Platforms</h3><hr>
+                    <p class="card-description">Few Important Resources and Links
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://leetcode.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">LeetCode</button></a>
+                        <a href="https://www.geeksforgeeks.org/fundamentals-of-algorithms/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">GeeksforGeeks</button></a>
+                        <a href="https://www.algoexpert.io/product" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">AlgoExpert</button></a>
+                         <a href="https://www.interviewbit.com/practice/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Interview Bit</button></a>
+                    </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Competitive Programming</h3><hr>
+                    <p class="card-description">Recommended Codeforces and CodeChef only for Competitive Programming (If planning for ACM - ICPC Contest) 
+
+
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://codeforces.com/contests" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Codeforces Contests</button></a>
+                        <a href="https://icpc.baylor.edu/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">More Aout ACM-ICPC</button></a>
+                          </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">General Interview Prep / Systems Design</h3><hr>
+                    <p class="card-description">Some Company Specific Resources
+
+
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://github.com/checkcheckzz/system-design-interview" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">System Design</button></a>
+                        <a href="http://highscalability.squarespace.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">High Scalability</button></a>
+                        <a href="http://www.geeksforgeeks.org/category/puzzles/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Interview Puzzles</button></a>
+                          </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Useful <i class="fa fa-youtube-play" style="color:white"></i> Youtube Channels</h3><hr>
+                    <p class="card-description">Do check them out!
+
+
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://www.youtube.com/results?search_query=rachit+jain" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Rachit Jain</button></a>
+                        <a href="https://www.youtube.com/channel/UCaO6VoaYJv4kS-TQO_M-N_g" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Clément Mihailescu</button></a>
+                        <a href="https://www.youtube.com/results?search_query=coding+blocks+webinar" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Coding Blocks</button></a>
+                          </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Resume Secrets</h3><hr>
+                    <p class="card-description">Ex-Google, Facebook Engineer Reviews my Resume!! Coding Resume Secrets!
+
+
+<br/></p>
+                    <div class="card-button">
+                       <a href="https://www.youtube.com/watch?v=gueJUgmzsNk" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Watch Here</button></a>
+                        </div>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Off-Campus Placement Opportunity</h3><hr>
+                    <p class="card-description">Some Huge Product Based Companies You can apply.
+  <ul>
+ 
+ <li><span style="font-weight:bolder;color:white">1. Codenation</span> - (Package 30 LPA)
+(3 contests - Hiring contest in August , Codeagon in September) 
+Information (Updates and registration forms) for all contests is posted on facebook page of codenation
+  <div class="card-button text-center">
+     <a href="https://www.facebook.com/codenation.india/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">2. Google </span>- Apply on Google careers website(Only 3 applications per month)
+To get a call from Google take part in Google Coding competitions- 
+  <div class="card-button text-center">
+     <a href="https://codingcompetitions.withgoogle.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">3. Google KickStart </span> - (Conducted Every Month) Consistent performers are called for full-time role at Google
+  <div class="card-button text-center">
+     <a href="https://codingcompetitions.withgoogle.com/kickstart" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+  </ul>
+
+<br/></p>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                   https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Alternatives for Summer Internship</h3><hr>
+                    <p class="card-description">Do check these Hackathons and Open Sources.
+  <ul>
+ 
+ <li><span style="font-weight:bolder;color:white">1. Open-Source</span> - is very rewarding
+There are different projects on github which you can contribute to. Below is one Example check out.
+
+  <div class="card-button text-center">
+     <a href="https://github.com/fossasia" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">2. Google Summer of Code </span>- Google Summer of Code is a global program focused on bringing more student developers into open source.
+  <div class="card-button text-center">
+     <a href="https://summerofcode.withgoogle.com/about/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">3. GirlSCript Summer of Code </span> - Girlscript Summer Of Code is a 3-month long open source project under Girlscript Foundation India 
+  <div class="card-button text-center">
+     <a href="https://www.gssoc.tech/projects.html" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">4. Crio.Do </span> - Crio.Do provides learning platform for software developers. The Company provides personalized experiences for developers to help them learn new skills
+  <div class="card-button text-center">
+     <a href="https://crio.do/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">5. BOSS - Bountiful Open Source Summer (2020) </span> - Contributing to open source is a really great way to get real-world software ... BOSS – Bountiful Open Source Summer by Coding Blocks
+  <div class="card-button text-center">
+     <a href="http://lab.codingblocks.com/boss" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">6. Hackathons on Devpost  </span> - Participate in hackathons by creating real-world projects and you can even look into others projects and post about your own projects.
+  <div class="card-button text-center">
+     <a href="https://devpost.com/hackathons" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+  </ul>
+
+<br/></p>
+                    {% comment %} <ul class="card-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul> {% endcomment %}
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

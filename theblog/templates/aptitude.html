@@ -1,0 +1,394 @@
+ {% extends 'base.html' %}
+{% block title %}Resources Section{% endblock %}
+{% load static %}
+
+
+{% block content %}
+<title>
+        Aptitude | Placement 360
+    </title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: white;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; color: white;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888); color: white;
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+textarea { font-size: 16px; 
+font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+   body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  min-height: calc(100vh - var(--vh-offset, 0px));
+
+  overflow-x: hidden;
+  font-weight: 400;
+  top: 0;
+  color: #252525;
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+}
+
+
+
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  align-self: flex-start;
+}
+
+
+
+
+.card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+.card:hover {
+  box-shadow: 0 11px 11px 0 rgba(0, 0, 0,.16);
+  transform: translateY(-5px);
+}
+
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px;box-shadow:  8px 8px 16px #9b9b9b, -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+    
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center;
+     text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #03bfbc;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+.card-social li a{
+    font-size: 20px;
+    color:#b3b8cd;
+}
+
+.card-social li a:hover{
+    color: #03bfbc;
+}
+a{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+span,#content{
+    text-align:left;
+    list-style:decimal;
+}
+#bookimg{
+    width:230px;
+    height:280px
+}
+</style>
+
+</head>
+<h1 class="second text-center"><span> APTITUDE RESOURCES AND ITS IMPORTANCE </span></h1><br><br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                  https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}"  alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Aptitude - A Quick Overview</h3><hr>
+                    <p class="card-description">For Placements
+<br/></p>
+ <li id="content"><span style="font-weight:bolder;color:white">The aptitude test consists of 3 sections – Quantitative Aptitude, Logical Reasoning and Verbal Ability.
+
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Overall, the major chapters that you have to cover are – 
+
+Numbers, Ages, Problems on Trains, Time and work, Permutations and combinations, probability, relationship based questions, seating arrangements, para jumbles, sentence correction and grammar. These chapters will definitely help in answering the bulk of questions asked.
+
+ 
+
+ <li id="content"><span style="font-weight:bolder;color:white">For Quantitative Aptitude, follow RS Agarwal or Aptipedia. Both have good concept explanations and a variety of different level problems to test yourself. Along with that, be a regular on websites like indiabix and faceprep from where you can get hundreds of free practice questions.
+
+ 
+
+ <li id="content"><span style="font-weight:bolder;color:white">All questions do not carry equal importance so emphasize on important topics like time and number systems, time and work, permutations and combinations, probability, time speed and distance, percentage and ratios to name a few.
+
+ 
+
+ <li id="content"><span style="font-weight:bolder;color:white">You don’t have to practice hundreds of questions but it is necessary to practice questions of all types and all difficulty levels. If a topic has 50 questions, make sure to try and solve all 50 without looking at the solution. Mark those which you could not solve and give them a try after a day. If you are not able to solve even then, look at the solutions and understand why you got them wrong/what is the concept behind them.
+
+ 
+
+ <li id="content"><span style="font-weight:bolder;color:white">For Logical Reasoning chapters like series completion, seating arrangements, blood relations, directions, coding and decoding are important. Follow the same strategy as quants. Speed is really important in logical reasoning and only practice will help you achieve the desired score.
+
+ 
+
+ <li id="content"><span style="font-weight:bolder;color:white">Verbal ability is a different ball game because you require a good grasp on the language. Communicating in English is the easiest way to practice grammar. Reading newspapers will also help you.
+
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Some important topics here are Reading comprehension, para jumbles, grammar based sentence correction and fill-in-the-blanks along with synonyms, antonyms and para completion, arrangement questions.
+
+ 
+
+ <li id="content"><span style="font-weight:bolder;color:white">In conclusion? Start from concepts and practice questions from each topic thus mastering all sections topic-by-topic. Don’t aim for cracking the cut-off, you will fall short of your goal. Aim to be amongst the top 2% and you will easily clear the cut-off.
+ </span>
+ <ul>
+ <hr>
+ 
+
+      <h3 class="card-name">Resources and Important Sites</h3><hr>
+                    <p class="card-description text-center">These are the mostly used Sites for Preparing Aptitude
+<br/></p>
+ <div class="card-button text-center">
+     <a href="http://www.indiabix.com" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">indiabix </button></a>
+     <a href="https://www.geeksforgeeks.org/aptitude-gq/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">GeeksforGeeks </button></a>
+     <a href="http://com.lofoya.qirina.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Lofoya </button></a>
+     <a href="https://www.aptitude-test.com" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Aptitude-Test </button></a>
+ </div>
+ <hr>
+ 
+
+      <h3 class="card-name">Best Books For Reference</h3><hr>
+                    <p class="card-description text-center">Quantitative Aptitude for Competitive Examinations by R.S.Aggarwal
+<br/></p>
+<img id="bookimg" src="https://images-na.ssl-images-amazon.com/images/I/510vx4eIUoL._SX391_BO1,204,203,200_.jpg" class="rounded mx-auto d-block" alt="...">
+
+ <div class="card-button text-center">
+     <a href="https://www.amazon.in/Quantitative-Aptitude-Competitive-Examinations-Aggarwal/dp/9352534026" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Buy Now </button></a>
+     </div>
+     <p class="card-description text-center">Modern Approach to Verbal & Non-Verbal Reasoning by R.S. Aggarwal
+<br/></p>
+<img id="bookimg" src="https://images-na.ssl-images-amazon.com/images/I/51H+YqBWOlL._SY344_BO1,204,203,200_.jpg" class="rounded mx-auto d-block" alt="...">
+
+ <div class="card-button text-center">
+     <a href="https://cutt.ly/EEHRrZZ" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Buy Now </button></a>
+     </div>
+     <p class="card-description text-center">Quantitative Aptitude by Arun Sharma
+<br/></p>
+<img id="bookimg" src="https://images-na.ssl-images-amazon.com/images/I/51UdM87ruLL._SX377_BO1,204,203,200_.jpg" class="rounded mx-auto d-block" alt="...">
+
+ <div class="card-button text-center">
+     <a href="https://cutt.ly/vEHRYdw" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Buy Now </button></a>
+     </div>
+  </ul>
+      
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

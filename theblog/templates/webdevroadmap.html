@@ -1,0 +1,1097 @@
+{% extends 'base.html' %}
+{% block title %}Resources Section{% endblock %}
+
+{% load static %}
+
+{% block content %}<title>
+       Web Development | Placement 360
+    </title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+
+/* ------------- */
+/* GLOBAL STYLES */
+/* ------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.container {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.brand {
+  text-align: center;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.brand span {
+  color: #ffffff;
+}
+
+.wrapper {
+  box-shadow: 0 0 20px 0 rgba(57, 82, 163, 0.7);
+}
+
+.wrapper > * {
+  padding: 1em;
+}
+
+/* ------------------- */
+/* COMPANY INFORMATION */
+/* ------------------- */
+
+.company-info {
+  background: #C3C9DD;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.company-info h3,
+.company-info ul {
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+/* ------- */
+/* CONTACT */
+/* ------- */
+
+.contact {
+  background: #dcdfea;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* ---- */
+/* FORM */
+/* ---- */
+
+.contact form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.contact form label {
+  display: block;
+}
+
+.contact form p {
+  margin: 0;
+}
+
+.contact form .full {
+  grid-column: 1 / 3;
+}
+.contact form .half {
+  grid-column: 1 / 3;
+}
+
+.contact form button,
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 0.5em;
+  border: solid 1px #627EDC;
+  border-radius: 4px;
+}
+
+.contact form textarea {
+  resize: none;
+}
+
+.contact form button {
+  background: #627EDC;
+  border: 0;
+  color: #e4e4e4;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+textarea{
+font-size: 14px;
+}
+.contact form button:hover,
+.contact form button:focus {
+  background: #3952a3;
+  color: #ffffff;
+  outline: 0;
+  transition: background-color 2s ease-out;
+}
+
+/* ------------- */
+/* MEDIA QUERIES */
+/* ------------- */
+
+@media only screen and (min-width: 700px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .wrapper > * {
+    padding: 2em;
+  }
+
+  .company-info {
+    border-radius: 4px 0 0 4px;
+  }
+
+  .contact {
+    border-radius: 0 4px 4px 0;
+  }
+
+  .company-info h3,
+  .company-info ul,
+  .brand {
+    text-align: left;
+  }
+}
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: white;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; color: white;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888); color: white;
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+ h1.second {
+        font-weight: bolder;
+		color:black;
+        font-size:20px;
+        text-transform:uppercase;
+
+    }
+    
+    h1.second span {
+        position: relative;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border-bottom: 1px solid mediumseagreen;color:black
+    }
+    
+    h1.second span:after {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% - 1px);
+        margin-left: -10px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border-top: 1px solid mediumseagreen;
+    }
+
+textarea { font-size: 16px; 
+font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+   body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  min-height: calc(100vh - var(--vh-offset, 0px));
+
+  overflow-x: hidden;
+  font-weight: 400;
+  top: 0;
+  color: #252525;
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+}
+
+.header-design {
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  height: 120px;
+  text-align: center;
+}
+
+.listar-map-button {
+  width: 100%;
+  position: absolute;
+  display: table;
+  right: 0;
+  top: 0;
+  height: 200px;
+  line-height: 164px;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.listar-map-button {
+  right: auto;
+  /***
+    box-shadow: 0 0 65px rgba(0,0,0,.07) inset, 0 0 35px rgba(0,0,0,.05) inset;**/
+}
+
+.listar-map-button-text span {
+  background-color: #fff;
+  color: #252525;
+  text-shadow: none;
+}
+
+.listar-page-header-content .listar-map-button-text span {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 15px;
+  height: 44px;
+  line-height: 1.6;
+  padding: 10px 25px;
+  box-shadow: 0 0 300px rgba(0, 0, 0, 0.65), 0 0 30px rgba(0, 0, 0, 0.06);
+  border-radius: 50px;
+  background-color: rgba(35, 40, 45, 0.9);
+  color: #fff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+header .footer-wave {
+  max-width: 102%;
+  width: 100%;
+  height: 187.8px;
+  left: 0;
+  z-index: 1;
+  bottom: -67px;
+  background: url(https://1.bp.blogspot.com/-NYl6L8pz8B4/XoIVXwfhlNI/AAAAAAAAU3k/nxJKiLT706Mb7jUFiM5vdCsOSNnFAh0yQCLcBGAsYHQ/s1600/hero-wave.png)
+    repeat-x;
+  animation: wave 10s cubic-bezier(0.44, 0.66, 0.67, 0.37) infinite;
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 1440px;
+  }
+}
+
+.listar-feature-item-wrapper {
+  margin-bottom: 120px;
+  padding-left: 27px;
+  padding-right: 27px;
+}
+
+.listar-feature-item {
+  height: calc(100% - 20px);
+}
+
+.listar-feature-item.listar-feature-has-link
+  ~ .listar-feature-fix-bottom-padding.listar-fix-feature-arrow-button-height {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+.listar-feature-item a {
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: calc(100% + 4px);
+  border-radius: 1000px;
+  z-index: 10;
+}
+
+.listar-feature-with-image .listar-feature-item a:before {
+  content: "";
+  position: absolute;
+  top: -74px;
+  left: 50%;
+  margin-left: -74px;
+  width: 148px;
+  height: 148px;
+  border-radius: 1000px;
+  z-index: 10;
+}
+
+.listar-feature-item a:after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 1000px;
+  z-index: 10;
+  animation: ripple 0.7s linear infinite;
+  box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6),
+    -5px -5px 10px rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes ripple {
+  0% {
+        box-shadow: 0 0 0 0 rgba(163, 177, 198, 0.3), 0 0 0 1em rgba(163, 177, 198, 0.3), 0 0 0 3em rgba(163, 177, 198, 0.03), 0 0 0 5em rgba(163, 177, 198, 0.01);
+  }
+  100% {
+    box-shadow: 0 0 0 1em rgba(163, 177, 198, 0.3), 0 0 0 3em rgba(163, 177, 198, 0.03), 0 0 0 5em rgba(163, 177, 198, 0.03), 0 0 0 8em rgba(163, 177, 198, 0.01);
+  }
+}
+
+
+
+.listar-feature-item .listar-feature-item-inner {
+  padding: 50px 30px;
+  border-radius: 6px;
+  z-index: 5;
+  position: relative;
+  height: 100%;
+}
+
+.listar-feature-item .listar-feature-item-inner {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.listar-feature-item .listar-feature-item-inner:before {
+  border: 0;
+  box-shadow: 120px 0px 150px rgba(80, 80, 80, 0.15),
+    10px 0px 10px rgba(80, 80, 80, 0.02);
+  border-radius: 1000px;
+  background: rgba(255, 255, 255, 0);
+  background: -moz-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(255, 255, 255, 0)),
+    color-stop(40%, rgba(255, 255, 255, 0)),
+    color-stop(100%, rgba(255, 255, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ffffff',GradientType=1);
+}
+
+.listar-feature-item .listar-feature-item-inner:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.listar-feature-right-border {
+  position: absolute;
+  width: calc(100% + 24px);
+  height: calc(100% + 24px);
+  top: -12px;
+  left: 50%;
+  overflow: hidden;
+}
+
+.listar-feature-items {
+  text-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.listar-feature-right-border:before,
+.listar-hovering-features
+  .listar-feature-item
+  a:hover
+  ~ .listar-feature-item-inner
+  .listar-feature-right-border:before {
+  border: 11px solid #2f53bf;
+}
+
+.listar-feature-right-border:before,
+.listar-hovering-features
+  .listar-feature-item
+  a:hover
+  ~ .listar-feature-item-inner
+  .listar-feature-right-border:before,
+.listar-hovering-features-grey
+  .listar-feature-item
+  a:hover
+  ~ .listar-feature-item-inner
+  .listar-feature-right-border:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 11px solid #258bd5;
+  border-radius: 800px;
+  left: -50%;
+}
+
+.listar-feature-item .listar-feature-block-content-wrapper {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  margin: -30px;
+  padding: 30px;
+  height: calc(100% + 100px);
+}
+
+.listar-features-design-2 .listar-feature-item-wrapper {
+  margin-bottom: 120px;
+  padding-left: 27px;
+  padding-right: 27px;
+}
+
+.listar-feature-item.listar-feature-has-link .listar-feature-item-inner:after {
+  content: "";
+  background-color: #fff;
+  z-index: 6;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.listar-feature-icon-wrapper {
+  width: 148px;
+  height: 148px;
+  line-height: 148px;
+  border-radius: 500px;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.06);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  left: 50%;
+  vertical-align: middle;
+  margin-left: -74px;
+  top: -66px;
+  margin-top: -74px;
+}
+
+.listar-feature-icon-inner {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 500px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.14);
+  background: #fff;
+}
+
+.listar-feature-icon-inner div {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: left;
+}
+
+.listar-feature-icon-inner img {
+  position: relative;
+  margin: 0 auto;
+  vertical-align: middle;
+  display: inline-block;
+  width: auto;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  height: 55px;
+}
+
+.listar-feature-item img,
+.listar-feature-item i {
+  position: relative;
+  display: inline-block;
+  border-bottom: 0;
+  font-size: 40px;
+  top: 0;
+  padding: 0;
+  color: #258bd5;
+}
+
+.listar-feature-with-image .listar-feature-content-wrapper {
+  top: 0;
+}
+.listar-feature-content-wrapper {
+  position: relative;
+  margin-top: -15.5px;
+}
+
+.listar-feature-item .listar-feature-item-title {
+  padding-top: 0;
+  margin: 0 0 30px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.listar-feature-item
+  .listar-feature-item-title.listar-feature-counter-added
+  > span {
+  margin-left: 25px;
+  border-radius: 0 50px 50px 0;
+}
+
+.listar-feature-item .listar-feature-item-title > span {
+  box-shadow: 15px 20px 30px rgba(80, 80, 80, 0.12),
+    5px 0px 40px rgba(80, 80, 80, 0.1);
+  padding: 10px 20px;
+  display: inline-block;
+  position: relative;
+  background-color: #fff;font-weight:bolder
+}
+
+.listar-feature-item .listar-feature-item-title > span span {
+  box-shadow: 15px 15px 30px rgba(80, 80, 80, 0.2),
+    5px 0px 80px rgba(80, 80, 80, 0.15);
+  padding: 10px 0;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 30px;
+  white-space: nowrap;
+  position: absolute;
+  top: -3px;
+  left: -40px;
+  border-radius: 50px;
+  background-color: #fff;font-weight:bolder
+}
+
+.listar-feature-item .listar-feature-item-title span {
+  display: inline-block;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400;
+  text-shadow: none;
+  border-radius: 50px;
+  color: #252525;
+  font-size: 18px;
+  font-weight:bolder
+}
+
+.listar-feature-item-excerpt {
+  padding: 0 20px;
+}
+
+.listar-feature-item-excerpt {
+  color: #252525;
+  position: relative;
+  top: 0;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pset {
+  padding-top: 120px;
+  {% comment %} padding-bottom: 40px; {% endcomment %}
+}
+
+.listar-map-button-text span {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 15px;
+  height: 44px;
+  line-height: 1.6;
+  padding: 10px 25px;
+  box-shadow: 0 0 31px rgba(0, 0, 0, 0.65), 0 0 4px rgba(0, 0, 0, 0.06);
+  border-radius: 50px;
+  background-color: rgba(35, 40, 45, 0.9);
+  color: #fff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.listar-map-button-text span {
+  background-color: #fff;
+  color: #252525;
+  text-shadow: none;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.listar-map-button-text span:after {
+  border: 12px solid #fff;
+}
+
+.listar-map-button-text span:after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: calc(100% + 28px);
+  height: calc(100% + 28px);
+  border-radius: 36px;
+}
+
+.listar-map-button:hover .listar-map-button-text span {
+  padding: 10px 43px 10px 51px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.listar-feature-with-image .listar-feature-item a:before {
+  content: "";
+  position: absolute;
+  top: -74px;
+  left: 50%;
+  margin-left: -74px;
+  width: 148px;
+  height: 148px;
+  border-radius: 1000px;
+  z-index: 10;
+}
+
+.listar-feature-item.listar-feature-has-link .listar-feature-item-inner:after {
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  box-shadow: 10px 10px 40px rgba(80, 80, 80, 0.15),
+    15px 15px 30px rgba(80, 80, 80, 0.05), 0 0 120px rgba(80, 80, 80, 0.6);
+  bottom: -30px;
+  background-image: url("https://image.flaticon.com/icons/svg/2316/2316674.svg");
+  background-size: 40%;
+  color: #555;
+  line-height: 52px;
+}
+
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  align-self: flex-start;
+}
+
+
+
+.container > div{
+  
+   
+}
+
+.card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+.card:hover {
+  box-shadow: 0 11px 11px 0 rgba(0, 0, 0,.16);
+  transform: translateY(-5px);
+}
+
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px; box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+   
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center; text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #03bfbc;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+.card-social li a{
+    font-size: 20px;
+    color:#b3b8cd;
+}
+
+.card-social li a:hover{
+    color: #03bfbc;
+}
+a{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+#blogimg{
+     font-weight: 100;
+  letter-spacing: 2px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  margin:2rem;
+  line-height: 1.4em;
+  box-shadow: 0 0 5px #333;
+  width:200px;
+  height:180px
+}
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+#blogimg {
+	display:none
+}
+  
+}
+</style>
+
+</head>
+<h1 class="second text-center"><span> WEB DEVELOPMENT </span></h1><br>
+
+<p>Get to know the basic programming languages you will need to know about if you&rsquo;re looking for a career in full-stack development</p>
+<p>Becoming a full stack web developer seems to be a daunting task, especially if you are completely new to the field of coding. As a beginner, you might think that you have a whole lot to learn within a short span of time.</p>
+{% comment %} <p>The languages, frameworks, libraries and databases along with everything else required are considered to be a list of <a href="https://www.crampete.com/blogs/guide-on-full-stack-web-development-tools/" target="_blank" rel="noopener">tools for full stack web development.</a> The easiest way to begin any work is to strategize with a roadmap. A roadmap is the best way to kick-start your attempt to <a href="https://www.crampete.com/blogs/a-comprehensive-guide-to-full-stack-web-development/" target="_blank" rel="noopener">become a full stack web developer.</a></p> {% endcomment %}
+<p>Your objective should be to learn the bare minimum skill-set required so that you can start experimenting and honing your learned skills. Once you have mastered the basics, you can go ahead and learn full stack technologies which will give you an edge over others. Follow a structured path and equip yourself steadily rather than trying to learn the entire web development spectrum.</p>
+<p>In this blog, you will find a complete <strong>Full-Stack Roadmap of 2021.</strong> It is the go-to guide for organizing and selecting technologies to learn. The roadmap is similar to the full-stack roadmap of 2020 that we wrote about earlier.&nbsp;</p>
+<p>This article will mainly benefit the noobs but is also useful for professional coders looking to become full-stack web developers. If you already have knowledge of some of the technologies we are going to talk about here, skip to the sections that will be useful to you. Feel free to customize this roadmap to suit your needs.&nbsp;&nbsp;</p>
+<h1 class="second text-center" style="margin-top:1rem"><span> Front-end technology roadmap for full-stack web development </span></h1><br>
+{% comment %} <h2 style="margin-top:1rem">Front-end technology roadmap for full-stack web development</h2> {% endcomment %}
+<p>Below we have listed the common tools that you need to master as a full-stack developer. The roadmap herein will serve as a learning path for you if you want to make a career in it.&nbsp;</p>
+<p><strong>Basic languages</strong></p>
+<p><strong>HTML</strong>- HyperText Markup Language is the most basic and must know for any website you are creating. You define and structure the content of a website.</p>
+<p><strong>CSS</strong>- CSS is used for styling websites and adding layouts, fonts and colours.&nbsp;</p>
+<p><strong>SQL</strong>- Structured Query Language is a basic language used for database management.</p>
+{% comment %} <p><a href="https://www.crampete.com/courses/front-end-online-course/" target="_blank" rel="noopener">Register on Front End Development Courses</a></p> {% endcomment %}
+<h1 class="second text-center" style="margin-top:1rem"><span> Front-end frameworks </span></h1><br>
+{% comment %} <h3  ></h3> {% endcomment %}
+<p><strong>BootStrap</strong>- BootStrap is an open-source toolkit for developing responsive, mobile first projects. It uses HTML,CSS and JavaScript. It helps design a website faster and easily. It has design templates for forms, buttons, tables, navigation etc., and also supports JavaScript plugins.</p>
+<center><img src="{% static 'theblog/images/webdevimg1.png' %}" alt="Mobile app web development technologies" id="blogimg" class="img-responsive" alt="..." style="width:900px;height:400px"></center>
+
+{% comment %} <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://crampete-staticfiles.s3.ap-south-1.amazonaws.com/blogs/Blog-139/Front-end1.jpg.png" alt="roadmap for full-stack development in 2021" width="500" height="316" /></p> {% endcomment %}
+<p><strong>AngularJS</strong>- This a structural framework for dynamic web apps. The JavaScript-based open source web framework is maintained by Google and a community of corporations and individuals. They address challenges in a single-page application. It allows usage of HTML as the template language. It data-binding and dependency reduce the amount of coding required substantially.&nbsp;</p>
+<p><strong>ReactJS</strong>- A JavaScript library maintained by Facebook and a group of companies as well as individual developers. React is optimal for fetching fast-changing data that needs to be recorded. It is used for building user interfaces for single page applications. It allows users to create reusable UI components.&nbsp;</p>
+<p><strong>VueJS</strong>-This is yet another open-source JavaScript framework for single page applications and UIs. It is very compact in size and high on performance. The best option for new coders, it offers hand-picked the choicest features of other frameworks like Angular and React. It is known as the most approachable framework today.&nbsp;</p>
+<h1 class="second text-center" style="margin-top:1rem"><span> Other programming languages required for Full-Stack development </span></h1><br>
+{% comment %} <h3  style="margin-top:1rem"></h3> {% endcomment %}
+<p>You need to be proficient in multiple programming languages as most of the core processes for any business have to be written in them. It is not possible to master all of them in a short time, so we have a list of languages for you to begin with.&nbsp;</p>
+<p><strong>JavaScript</strong>-&nbsp; JavaScript is a just-in-time compiled programming language. It helps in adding dynamic features to your website. This is used for both front end and back end operations.</p>
+<p>JavaScript basics are easy to learn. Many of the front-end as well as back-end frameworks include NodeJS and AngularJS use JavaScript. It is widely used for applications like Chatbots. A Java roadmap framework is vital to any full-stack development roles, either junior or senior, in almost all organizations.</p>
+<p><strong>TypeScript</strong>- Developed and maintained by Microsoft for the development of large applications, TypeScript is a prerequisite if you want to learn Angular, and it has recently become very popular. It is always used along with JavaScript for features like type checking.</p>
+{% comment %} <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://crampete-staticfiles.s3.ap-south-1.amazonaws.com/blogs/Blog-139/Blog_AD_Image1%20(25).png" alt="Full stack development course" width="800" height="163" /></p> {% endcomment %}
+<p><strong>Python</strong>- Python is a high-level, general-purpose language. It can be used on a server to create web applications, mathematics and server scripting. It connects to databases to read and manipulate files. Python was designed for readability and runs on an interpreter system. It can also be used in a procedural, object-oriented or functional way.&nbsp;</p>
+<p><strong>Ruby</strong>- A dynamic, open source language, Ruby is easy to learn and code. It focuses on productivity and simplicity, and it can be used for web applications, servers, system utilities, backups and database works.</p>
+<p><strong>PHP</strong>- PHP is the most popular scripting language, and it can be embedded into HTML. PHP scripts can only be interpreted on a server where PHP is installed. It is used to collect form data and send or receive cookies amongst other functions.</p>
+{% comment %} <p><a href="https://www.crampete.com/courses/full-stack-web-development-online-course/" target="_blank" rel="noopener">Click here to Full stack development courses</a></p> {% endcomment %}
+<h1 class="second text-center" style="margin-top:1rem"><span> Back-end technology roadmap for Full-Stack Web development</span></h1><br>
+
+{% comment %} <h2  style="margin-top:1rem"></h2> {% endcomment %}
+<p>Developers need a back-end framework so that an application can be created. It is the script-side of a dynamic application. A lot of options are available for back-end frameworks.&nbsp;</p>
+<p><strong>Express</strong>- Express.js is a framework used as a web application for Node.js. It is a module of NodeJS. It can be used for apps that are based on servers that will listen for connection requests from clients. It can be used for single-page, multi-page, and hybrid web applications. It is fast, easy to use and assertive.</p>
+<p><strong>NodeJS</strong>- NodeJS is an open-source, cross-platform in nature that runs across various platforms. it is a JavaScript runtime environment that executes JavaScript outside a browser.</p>
+<p><strong>Django</strong>- Django is a high-level Python web framework that follows model-template-view architecture. It is used to simplify the creation of complex, database-driven websites. It is fast and promotes a clean design.&nbsp;</p>
+{% comment %} <img src="https://crampete-staticfiles.s3.ap-south-1.amazonaws.com/blogs/Blog-139/Front-end1.jpg.png" alt="Mobile app web development technologies" id="blogimg" class="img-responsive" alt="..." style="width:100%;height:500px"> {% endcomment %}
+<center><img src="{% static 'theblog/images/webdevimg2.png' %}" alt="Mobile app web development technologies" id="blogimg" class="img-responsive" alt="..." style="width:900px;height:400px"></center>
+
+{% comment %} <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://crampete-staticfiles.s3.ap-south-1.amazonaws.com/blogs/Blog-139/Back-end1.jpg.png" alt="Back end devloper" width="500" height="316" /></p> {% endcomment %}
+{% comment %} <p><a href="https://www.crampete.com/courses/back-end-online-course/" target="_blank" rel="noopener">Click here Back End Development Course</a></p> {% endcomment %}
+<p><strong>Ruby on Rails</strong>- Ruby on Rails is a server-side web application framework based on the Ruby language. It provides default structures for databases, web services and web pages. It uses model-view-controller architecture. This is comparatively hard to learn as you have to learn multiple and independent concepts.</p>
+<h1 class="second text-center" style="margin-top:1rem"><span> Database Roadmap</span></h1><br>
+
+<p>In today's scenario, there are tons of databases. Each company develops its own databases according to their requirements.&nbsp;</p>
+<p>The objective of this roadmap is to learn and become a database administrator.</p>
+<p><strong>MySQL, SQLite, Postgres</strong>- These are Relational Database management systems, and the data is stored in table-like schemes. This is good for storing business data. These use SQL</p>
+<p><strong>MongoDB, Cassandra, Apache storm, Sphinx</strong>- These are the NoSQL databases. Their only commonality is that they do not use a relational database scheme. This type of database covers a wide range of technologies and can be used to find key-value DB, graph DBs, streaming DBs etc.,</p>
+<p><strong>VoltDB and MemSQL</strong>- These are a new kind of database, the NewSQL. They follow the relational scheme but instead of disks, they use memory. the advantage is that they outperform the traditional RDBMS but the limited amount of memory available is definitely a downside to this type of database.</p>
+<h1 class="second text-center" style="margin-top:1rem"><span> Additional skills recommended for full-stack web development</span></h1><br>
+
+{% comment %} <h3  style="margin-top:1rem">Additional skills recommended for full-stack web development</h3> {% endcomment %}
+<p>Git- The most popular distributed version control system, Git is fast and efficient. It has the capacity to handle small to very large projects. It is used to coordinate between programmers as well as track any changes made to any code stored in its repository. Check out the git basics before getting started. GitHub is the most widely used code repository, and therefore a must learn for an aspiring coder. A GitHub roadmap is a crucial part in the full-stack learning course.</p>
+<p><strong>Machine Learning</strong>- A subset of AI, machine learning is now being incorporated into various industries. It has entered the web development field in addition to being part of big data. This provides the ability to learn and improve without being explicitly programmed. ML is a good-to-learn skill for a full stack web developer.</p>
+<p><strong>SSH</strong>- Secure shell protocol is used to operate network services securely over an unsecured network. SSH provides a secured remote login from one computer to another. It ensures the privacy and integrity of data.</p>
+<p><strong>HTTP/HTTPS</strong>-HyperText Transfer Protocol (HTTP) is the protocol used by the world wide web. it defines how messages are transmitted, and how actions are taken by web servers and browsers when responding to commands. HTTPS is the secured version of HTTP. Here, the communication protocol is encrypted using Transport Layer Security. It ensures protection against man-in-the-middle attacks and eavesdropping.</p>
+<p><strong>Linux command</strong>-line basic-Although it is not mandatory that you possess this skill, it is good to know about Linux. It is not necessarily easy or hard to learn. Linux makes the job easier and saves a lot of time by organizing items on the back-end</p>
+<p><strong>Data structures and algorithms</strong>-Data structures are different ways of storing data, while an algorithm is a generic approach methodology to solve a problem or requirement. Every programmer needs to be familiar with these concepts. These are not core skills, but the more intuitive you are about these, the easier it is to solve issues or add requirements. The impacts are felt in efficiency, scalability and performance of an application. As a full stack developer, these courses will help you immensely.</p>
+<p><strong>.Net and asp.net framework</strong>- .Net framework is used for building both web and server based applications. .Net roadmap is vital for industry standards. Asp.net is a subset of .net and is used primarily for simplifying dynamic pages on a website. Its roadmap is equally important in the front-end and back-end development.</p>
+ <div style="margin-top:2rem">
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                    https://images.pexels.com/photos/270366/pexels-photo-270366.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Useful Web Development Resources</h3><hr>
+                    <p class="card-description">Do Check Out.
+  <ul>
+ 
+ <li><span style="font-weight:bolder;color:white">1. Front-End</span> - Front-end web development is the development of the graphical user interface of a website, through the use of HTML, CSS, and JavaScript, so that users can view and interact with that website
+  <div class="card-button text-center">
+     <a href="https://www.tutorialspoint.com/the_complete_front_end_web_development_course/index.asp" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">TutorialsPoint</button></a>
+    <a href="https://www.w3schools.com/whatis/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">W3Schools</button></a>
+
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">2. Back-End </span>- Back end development refers to the server side of an application and everything that communicates between the database and the browser.
+  <div class="card-button text-center">
+     <a href="https://www.tutorialspoint.com/back_end_web_development_with_php_and_mysql/index.asp" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">TutorialsPoint</button></a>
+    <a href="https://www.w3schools.com/php/DEFAULT.asp" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">W3Schools</button></a>
+ </div>
+</li>
+
+  </ul>
+
+<br/></p>
+                    
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

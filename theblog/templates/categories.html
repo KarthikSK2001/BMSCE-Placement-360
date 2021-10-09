@@ -1,0 +1,312 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>
+{% if category_posts %}    
+    {{num_posts}}  {{cats}}  Placements | Placement 360
+{% endif %}
+</title> 
+<style>
+.card>img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.card{
+	margin:1rem
+}
+h4{
+	margin-left:1rem;
+	font-weight:bolder
+}
+ h1.second {
+        font-weight: bolder;
+		color:black
+    }
+    
+    h1.second span {
+        position: relative;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border-bottom: 1px solid mediumseagreen;color:black
+    }
+    
+    h1.second span:after {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% - 1px);
+        margin-left: -10px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border-top: 1px solid mediumseagreen;
+    }
+
+div.card {
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+table { 
+
+	
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding:6px; 
+	border: 1px solid #ccc; 
+	text-align: center; 
+	font-size: 17px;
+	}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  
+  
+}
+p,td{
+	color:black;
+	font-weight:bold
+}
+
+
+</style>
+
+
+
+<div class="grey-bg container-fluid">
+  
+  <section id="stats-subtitle">
+
+{% if category_posts %}    
+	{% comment %} <h1>{{ cats }}</h1> {% endcomment %}
+<h1 class="second" style="font-size: 23px;text-align: left;color:black"><span>PLACEMENTS - {{ cats }}</span></h1>
+	<br/>
+  <div class="row">
+  {% for post in category_posts %}	
+    <div class="col-xl-5 col-md-12">
+      <div class="card overflow-hidden">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center" style="width:100%">
+               {% if post.Company_Logo %}
+		<center><img src="{{ post.Company_Logo.url }}" style="width:100%;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;height:160px" id="Company_Logo"></center>
+	{% endif %}
+              </div>
+              <div class="media-body">
+                
+              </div>
+			   <div class="align-self-center">
+                {% comment %} <i class="icon-heart danger font-large-2"></i> {% endcomment %}
+              </div>
+             	
+            </div>
+          </div>
+        </div>
+		  <hr style="
+        border: 0;
+           box-shadow: 0 0 10px 1px #888;
+           border-top: 2.5px groove #888;">
+		<h4 class="text-left" style="display:block;font-weight:bolder">
+		
+		<a href="{% url 'article-detail' post.pk %}">{{ post.company }} </a>  <span> {% if user.is_authenticated %}	
+				{% if user.id == post.author.id %}
+				 <a href="{% url 'update_post' post.pk %}">(Edit)</a> 
+				  <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+				{% endif %}
+			{% endif %}</span>	</h4> 
+      
+       <hr style="
+        border: 0;
+           box-shadow: 0 0 10px 1px #888;
+           border-top: 2.5px groove #888;">
+<table>
+  <thead>
+    <tr>
+	  <th style='width:100%'>Student Placed</th>
+     
+  </thead>
+  <tbody>
+    <tr>
+	    <td data-column="Student Placed">{{post.student_Name}}</td>
+      
+    </tr>    
+  </tbody>
+</table>
+<table>
+  <thead style='width:50%'>
+    <tr style='width:50%'>
+
+     <th style='width:50%'>Hiring Type </th>
+      <th style='width:50%'>Compensation </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	   
+          <td data-column="Hiring Type">{{post.hiring_type}}</td>
+      <td data-column="Compensation ">{{post.compensation_Details}}</td>
+    </tr>    
+  </tbody>
+</table>    <hr style="
+        border: 0;
+           box-shadow: 0 0 10px 1px #888;
+           border-top: 2.5px groove #888;">
+     
+      <div style="background-color:#0088cc;color:#3498db;padding:10px">  
+		   		{% comment %} <h6 class="text-left" style="display:block;margin-left:1rem;font-weight:bolder">Student Placed - {{ post.student_Name }}  </h6>
+		<h6 class="text-left" style="display:block;margin-left:1rem;font-weight:bolder">Author - {{ post.author.first_name }} {{ post.author.last_name }}  </h6>
+		<h6 class="text-left" style="display:block;margin-left:1rem;font-weight:bolder">Hiring Type - {{ post.hiring_type }}  </h6>
+		<h6 class="text-left" style="display:block;margin-left:1rem;font-weight:bolder">Package - {{ post.compensation_Details }}  </h6> {% endcomment %}
+		
+            
+		<p xlass="md-2" style="text-align:center;color:white;">Written On, {{ post.post_date }} </p>    
+     </div>
+   <hr style="
+        border: 0;
+           box-shadow: 0 0 10px 1px #888;
+           border-top: 2.5px groove #888;">
+</div>
+	  
+    </div>
+{% endfor %}
+{% else %}
+	<h1 class="second" style="font-size: 23px;text-align: left;color:black"><span>SORRY, NO INTERVIEW EXPERIENCES POSTS HERE YET..   </span></h1>
+	<br/>
+
+{% endif %}
+    {% comment %} <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <i class="icon-speech warning font-large-2 mr-2"></i>
+              </div>
+              <div class="media-body">
+                <h4>Total Comments</h4>
+                <span>Monthly blog comments</span>
+              </div>
+              <div class="align-self-center"> 
+                <h1>84,695</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h1 class="mr-2">$76,456.00</h1>
+              </div>
+              <div class="media-body">
+                <h4>Total Sales</h4>
+                <span>Monthly Sales Amount</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-heart danger font-large-2"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body cleartfix">
+            <div class="media align-items-stretch">
+              <div class="align-self-center">
+                <h1 class="mr-2">$36,000.00</h1>
+              </div>
+              <div class="media-body">
+                <h4>Total Cost</h4>
+                <span>Monthly Cost</span>
+              </div>
+              <div class="align-self-center">
+                <i class="icon-wallet success font-large-2"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> {% endcomment %}
+  </div>
+</section>
+</div>
+
+
+{% comment %} {% if category_posts %}    
+	<h1>{{ cats }}</h1>
+{% for post in category_posts %}	
+<div class="card text-center" style="width: 90%;">
+
+	<a href="{% url 'article-detail' post.pk %}">{{ post.company }}</a> - {{ post.author.first_name }} {{ post.author.last_name }} -  {{ post.post_date }} 
+			
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endfor %}
+{% endif %} {% endcomment %}
+
+
+{% comment %} {% if category_posts %}    
+	<h1>{{ cats }}</h1>
+	<ul>
+	{% for post in category_posts %}
+		<li><a href="{% url 'article-detail' post.pk %}">{{ post.company }}</a> 
+			- {{ post.author.first_name }} {{ post.author.last_name }} -  {{ post.post_date }} 
+		<small>
+			{% if user.is_authenticated %}	
+				{% if user.id == post.author.id %}
+				- <a href="{% url 'update_post' post.pk %}">(Edit)</a> 
+				  <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+				{% endif %}
+			{% endif %}
+		</small> <br/>
+		{{ post.body|slice:":200"|safe }}</li>
+	{% endfor %}
+	</ul>
+
+{% else %}
+	<h1 class="second" style="font-size: 23px;text-align: left;color:black"><span>SORRY, NO INTERVIEW EXPERIENCES POSTS HERE YET..   </span></h1>
+	<br/>
+{% endif %}  {% endcomment %}
+
+
+{% endblock %}

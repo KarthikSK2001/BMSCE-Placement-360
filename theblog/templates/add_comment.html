@@ -1,0 +1,109 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Post Comment | Placement 360</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>
+   textarea{
+            text-transform:capitalize;
+            font-size:18px
+        }
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: #fff;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888);
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+	</style>
+<h1 class="second"><span>POST YOUR COMMENT HERE</span></h1>
+	<br/><br/>
+
+	
+	<div class="form-group">
+<form method="POST">
+			{% csrf_token %}
+
+<p><label for="id_body">Your Message/Comment <span style="color: crimson;">*</span></label> <textarea  name="body" class="form-control"cols="40" rows="10" required id="id_body" placeholder="Type In Here..." style="margin-top:1rem;margin-bottom:0.5rem"></textarea></p>
+ <p class="info"><span style="color: crimson;">*</span> (Here the Comment can be anything Eg - Congratulating, Doubts, Queries..) </p>
+
+{% comment %} <p><label for="id_body">Body:</label> <textarea name="body" cols="40" rows="10" class="form-control" required id="id_body">
+</textarea></p> {% endcomment %}
+				 <button class="btn btn-primary" style="margin-top:1rem" onclick="posted()">Post My Experience</button>
+	</div>
+
+
+	
+  <script>
+
+
+  function posted()
+  {
+      if(document.getElementById("id_body").value == '')
+{
+     swal("Please write something!", "Sorry, Its Empty!", "error");
+  }
+
+else{
+    swal({
+  title: "Comment Posted Successfully!",
+  text: "Thanks for Interacting!",
+  icon: "success",
+  button: "Close",
+})
+  }
+}
+  </script>
+
+
+
+
+
+{% endblock %}

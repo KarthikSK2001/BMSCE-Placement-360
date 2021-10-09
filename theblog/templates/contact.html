@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<title>
+       Contact | Placement 360
+    </title>
+<style>
+
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: #fff;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888);
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+ 
+
+textarea { font-size: 16px; 
+font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+#commentimg{
+  width:200px;
+  height:200px;
+  margin-top:1rem
+}
+input{
+  padding:-2%;
+}
+</style>
+
+</head>
+
+<div class="container">
+
+	<div class="wrapper">
+
+		<!-- COMPANY INFORMATION -->
+		<div class="company-info" >
+			<h3 class="text-center" style="font-weight:bolder">Placement 360</h3>
+<div class="text-center">
+  <center><img src="https://www.tataaia.com/content/dam/tataaialifeinsurancecompanylimited/contact-us/ContactUs.png" class="card-img rounded-circle" id="commentimg"></center>
+
+</div>
+<br>
+			  <center><a class="btn btn-primary" href="mailto:bmsceplacement360@gmail.com">Email Us</a>  </center>
+		</div>
+		<!-- End .company-info -->
+
+		<!-- CONTACT FORM -->
+		<div class="contact">
+			<h3 style="font-weight:bolder" class="text-left">Drop Us A Message</h3>
+
+			 <form method="post" autocomplete="off" name="google-sheet" id="contact-form"  spellcheck="false" autocomplete="off" autofocus="autofocus" >
+{% csrf_token %}
+		<p class="full">
+					<label>Name</label><br>
+					<input type="text" name="Name" id="name" placeholder="John Doe"  spellcheck="false" autocomplete="off" autofocus="autofocus" required >
+				</p>
+
+		<p class="full">
+					<label>E-mail Id</label>
+					<input type="email" name="Email" id="email" placeholder="johndoe.cs19@bmsce.ac.in"  required spellcheck="false" autocomplete="off" autofocus="autofocus" >
+				</p>
+
+				<p class="full">
+					<label>Subject</label>
+					<input type="text" name="Subject" id="subject"  placeholder="Type Here.." required spellcheck="false" autocomplete="off" autofocus="autofocus" >
+				</p>
+
+			
+
+				<p class="full">
+					<label>Message</label>
+					<textarea name="Message" rows="5" id="message" autocomplete="off"></textarea>
+				</p>
+
+			<div class="btn-group" role="group" aria-label="Basic example" >
+  <input class="btn btn-primary"  type="submit" name="submit" class="btnSubmit btn" value="Send Message" style='margin-right:0.5rem'/>
+
+ <input class="btn btn-primary" type="reset" class="btnSubmit btn" value="Clear Form" />
+</div>
+
+			</form>
+			<!-- End #contact-form -->
+		</div>
+		<!-- End .contact -->
+
+	</div>
+	<!-- End .wrapper -->
+</div>
+
+ <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzf1jE_Z4a-EzqUsK1p0T-i2yxamTtUtvOHhXMbqmQahtUfPLdQtpoEWhRwFVujN3KuUw/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => swal({
+                  title: "Message Sent Successfully!",
+                  text: "Thanks for Contacting Us!",
+                  icon: "success",
+                  button: "Close",
+                }))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+         <script>
+         $('#contact-form')[0].reset();
+         $(document).ready(function () {
+    $('input').attr('autocomplete', 'false');
+});
+          </script>
+<!-- End .container -->
+{% comment %} <div class="container register">
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <h3 class="register-heading">Connect Google Spreadsheet to HTML</h3>
+                            <div class="row register-form">
+                                <div class="col-md-12">
+                                    <form method="post" autocomplete="off" name="google-sheet">
+                                        <div class="form-group">
+                                            <input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" name="Email" class="form-control" placeholder="Your Email *" value="" required=""/>
+                                        </div>
+                                         <div class="form-group">
+                                            <input type="text" name="Subject" class="form-control" placeholder="Your Subject *" value="" required=""/>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="Message" class="form-control" placeholder="Your Message Here *" value="" required="" ></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" class="btnSubmit btn-block" value="Login" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+          
+          <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzf1jE_Z4a-EzqUsK1p0T-i2yxamTtUtvOHhXMbqmQahtUfPLdQtpoEWhRwFVujN3KuUw/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body> {% endcomment %}
+{% endblock %}

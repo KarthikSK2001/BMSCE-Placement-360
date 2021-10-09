@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+   <title>
+       Edit User Info | Placement 360
+    </title>
+ <style>
+        textarea{
+            text-transform:capitalize;
+            font-size:18px
+        }
+        strong,span{
+          display:none
+        }
+        .btn, .btn:hover {
+        color: #88a5b1;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+        color: #fff;
+        }
+
+        .btn {
+        font: 18px Helvetica;
+        padding: 12px 22px 10px;
+        margin: 0;
+        border: none;
+        border-bottom: 3px #aacedd solid;
+        text-decoration: none;
+        background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+        background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+        background-image: linear-gradient(#ffffff, #f8f8f8);
+        position: relative;
+        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        }
+        .btn:active {
+        position: relative;
+        top: 3px;
+        border: none;
+        }
+
+        .btn-primary {
+        border-bottom: 3px #000609 solid;
+        background-image: -moz-linear-gradient(#0079bb, #005888);
+        background-image: -webkit-linear-gradient(#0079bb, #005888);
+        background-image: linear-gradient(#0079bb, #005888);
+        }
+        .btn-primary:hover {
+        background-image: -moz-linear-gradient(#009aee, #005888);
+        background-image: -webkit-linear-gradient(#009aee, #005888);
+        background-image: linear-gradient(#009aee, #005888);
+        }
+
+        .btn-large {
+        font-size: 18px;
+        padding: 12px 22px 10px;
+        }
+        
+</style>   
+
+<h1 class="second"><span>EDIT YOUR PROFILE SETTINGS HERE</span></h1>
+<br/>
+
+
+
+<br/>
+
+
+<div class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+ 
+  <p style="color:crimson;font-weight:bolder">This is your hashed Password</p>
+  <p style="color:#0088cc;font-weight:bolder">Click below to change Your Password</p>
+</div>
+<a href="../password/" target="_blank" class="btn btn-primary">Change Password</a>
+<button class="btn btn-primary">Update Profile</button>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

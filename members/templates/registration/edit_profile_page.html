@@ -1,0 +1,93 @@
+
+
+{% extends 'base.html' %}
+{% block title %}Edit Profile Page{% endblock %}
+{% block content %}
+<title>
+       Edit Profile | Placement 360
+</title>
+
+<style>
+        textarea{
+            text-transform:capitalize;
+            font-size:18px
+        }
+        .btn, .btn:hover {
+        color: #88a5b1;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+        color: #fff;
+        }
+
+        .btn {
+        font: 18px Helvetica;
+        padding: 12px 22px 10px;
+        margin: 0;
+        border: none;
+        border-bottom: 3px #aacedd solid;
+        text-decoration: none;
+        background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+        background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+        background-image: linear-gradient(#ffffff, #f8f8f8);
+        position: relative;
+        -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        }
+        .btn:active {
+        position: relative;
+        top: 3px;
+        border: none;
+        }
+
+        .btn-primary {
+        border-bottom: 3px #000609 solid;
+        background-image: -moz-linear-gradient(#0079bb, #005888);
+        background-image: -webkit-linear-gradient(#0079bb, #005888);
+        background-image: linear-gradient(#0079bb, #005888);
+        }
+        .btn-primary:hover {
+        background-image: -moz-linear-gradient(#009aee, #005888);
+        background-image: -webkit-linear-gradient(#009aee, #005888);
+        background-image: linear-gradient(#009aee, #005888);
+        }
+
+        .btn-large {
+        font-size: 18px;
+        padding: 12px 22px 10px;
+        }
+        
+</style>
+    
+{% if user.is_authenticated %}
+	{% if user.id == profile.user.id %}
+		<h1 class="second"><span>EDIT YOUR PROFILE HERE</span></h1>
+		<br/><br/>
+
+		<div class="form-group">
+	<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button class="btn btn-primary">Update Profile Page</button>
+		</div>
+
+
+
+	{% else %}
+
+	You are not the correct User To Edit This Page...
+	{% endif %}
+
+{% else %}
+
+	You're not allowed here! (and you know it...)
+
+
+{% endif %}
+
+
+{% endblock %}

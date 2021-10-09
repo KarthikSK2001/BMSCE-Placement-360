@@ -1,0 +1,364 @@
+{% extends 'base.html' %}
+{% block title %}Resources Section{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<title>
+       App Development | Placement 360
+    </title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: white;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; color: white;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888); color: white;
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+
+
+.card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+.card:hover {
+  box-shadow: 0 11px 11px 0 rgba(0, 0, 0,.16);
+  transform: translateY(-5px);
+}
+
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px; box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+   
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center; text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #03bfbc;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+.card-social li a{
+    font-size: 20px;
+    color:#b3b8cd;
+}
+
+.card-social li a:hover{
+    color: #03bfbc;
+}
+a,p{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+p,span{
+  color:black
+}
+#blogimg{
+     font-weight: 100;
+  letter-spacing: 2px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  margin:2rem;
+  line-height: 1.4em;
+  box-shadow: 0 0 5px #333;
+  width:200px;
+  height:180px;
+  border-radius:1rem
+}
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+#blogimg {
+	display:none
+}
+  
+}
+</style>
+
+</head>
+<h1 class="second text-center"><span> APPLICATION DEVELOPMENT </span></h1><br>
+
+
+<p><span style="font-weight: 400;">Businesses are starting to depend on technology for its marketing and sales along with the conventional route. Building mobile apps is currently one of the biggest markets on the internet. It is used as a means to draw people into using their products and services. </span><span style="font-weight: 400;">The internet penetration is constantly increasing. We can see that more and more people are glued to their mobile phones.&nbsp;</span> <span style="font-weight: 400;">&nbsp;</span></p>
+<p><span style="font-weight: 400;">This has opened up a set of new targets and has increased the demand for mobile applications and websites which are mobile-friendly.&nbsp;</span> <span style="font-weight: 400;">Apps are developed for mobile devices such as digital personal assistant. Every mobile app now has a chatbot for support. Learn how to </span><a href="https://www.crampete.com/blogs/build-a-chatbot-with-full-stack-web-development/" target="_blank" rel="noopener"><span style="font-weight: 400;">build chatbots</span></a><span style="font-weight: 400;"> using frameworks. <span style="font-weight: 400;"> </span></p>
+<p><span style="font-weight: 400;">There are apps which come already installed in a mobile device at its manufacturing stage. The other mobile applications are developed that gives users a seamless app experience within a browser.&nbsp;&nbsp;</span> <span style="font-weight: 400;">For the complete mobile application development process, there are many phases which need to be coded. There is the front-end or the UI of the mobile app.</span> <span style="font-weight: 400;">&nbsp;Then there is the back-end server and related processes. An enterprise with a BYOD setup needs additional security layers to ensure data security. Finally, you require a testing setup for mobile apps.&nbsp; </span></p>
+<p><strong id="sroll-2">Native application development</strong></p>
+<p><span style="font-weight: 400;">This type of development is when you use a&nbsp; programming language and a software development kit and other tools that are platform-specific.</span> <span style="font-weight: 400;">&nbsp;The tools are usually given by the OS vendor. This means that you use different languages and tools for different platforms for the same app. </span></p>
+<p><strong id="sroll-3">Cross-platform mobile application development</strong></p>
+<p><span style="font-weight: 400;">In this type of app development, coders use a single code base. Mobile applications are developed simultaneously for various platforms. </span><span style="font-weight: 400;">These apps are adaptable across multiple digital devices.</span></p>
+<p><span style="font-weight: 400;"> </span><strong id="sroll-4">Hybrid mobile application development</strong></p>
+<p><span style="font-weight: 400;">this type of mobile app is developed using standard web technologies. </span><span style="font-weight: 400;">The main three languages are HTML5, CSS3, and Javascript. This shared set of coding is wrapped in the native container of the required platform. There is a separate tool which helps in the process of wrapping the common code in the native container. </span></p>
+<p><span style="font-weight: 400;">This is then featured as a regular app. It is very similar to a website and works like a page rendered in a browser.</span></p>
+<h1 class="second text-center" style="margin-top:1rem"><span> How to select a technology stack for mobile application development?&nbsp;</span></h1><br>
+
+{% comment %} <h2>How to select a technology stack for mobile application development?&nbsp;</h2> {% endcomment %}
+<p><span style="font-weight: 400;">There is no shortage of application development tools and frameworks out there. So which one should you choose for your project? Which tool is the best fit for your requirements. These are the questions that need to be answered while considering a few listing why they are so. Give importance to security and scalability in addition to the basic requirements.&nbsp;</span></p>
+<center><img src="{% static 'theblog/images/appdevimg1.jpg' %}" alt="Mobile app web development technologies" id="blogimg" class="img-responsive" alt="..." style="width:900px;height:400px"></center>
+{% comment %} <p><img class="aligncenter size-full wp-image-1804" style="display: block; margin-left: auto; margin-right: auto;" src="https://crampete-staticfiles.s3.ap-south-1.amazonaws.com/blogs/Blog-126/Mobile-app1.jpg" alt="Web app tools " width="500" height="306" /></p> {% endcomment %}
+<p><strong>Project type</strong></p>
+<p><span style="font-weight: 400;">What do you want to do with your app. Is it going to platform specific or is it going to be cross-platform app? Decide on the type of devices this app is going to function. Decide your goals or objectives for this app. What is the work to be done by the app? What are the services that you are going to provide using it? </span></p>
+<p><span style="font-weight: 400;">The UI needs to be customized for multiple devices. Make a list of the this you want from this app, and always keep security in mind. Use this list to select which programming language, framework, tech stack, and library you should use to build the mobile app.&nbsp;</span></p>
+<p><strong>Available resources</strong></p>
+<p><span style="font-weight: 400;">There a quite a few frameworks that are very similar and is almost offers a lot of features that you require. </span><span style="font-weight: 400;">If that is the case, then go ahead and utilize the already available resources rather than hiring a new resource for the development of the mobile application.&nbsp;</span> <span style="font-weight: 400;">Just ensure that the stack you have selected has good community presence and is actively being updated. Do not push for a relatively unknown stack which your team does not have experience with. This will waste your time, effort and money.&nbsp;</span></p>
+<p><strong id="sroll-6">Cross-platform or native app?&nbsp;</strong></p>
+<p><span style="font-weight: 400;">The decision is simple. Who is the target audience? Do you want to write multiple apps for different platforms or use the shared code and wap it in the native container for hybrid app development? You can go the platform specific way to develop the app. Or you can choose technology stack that supports platform independence.&nbsp;</span></p>
+<p><strong id="sroll-7">Programming language</strong><span style="font-weight: 400;">&nbsp;</span></p>
+<p><span style="font-weight: 400;">Swift and Objective-C are the best choices for coding apps for iOS and other Apple-based digital devices. For Android, go with Java and Kotlin as the first choice of programming language. Then we have the cross-platform mobile app development and&nbsp;</span> <strong>Swift</strong> <span style="font-weight: 400;">Swift is a programming language developed by Apple Inc., It supports multiple programming paradigms. It was developed for creating applications for Apple smart devices. </span></p>
+<p><span style="font-weight: 400;">It supports macOS, iOS, tvOS, watchOS, Linux, Darwin, and FreeBSD. It is influenced by Objective-C. It was developed in C concepts with more concentration on safety and security. It is a new language and was first introduced in 2014. It is constantly updated. It has a good community presence. Swift works with Cocoa and Cocoa touch framework for APP development.&nbsp;</span></p>
+<p><strong>Objective-C</strong></p>
+<p><span style="font-weight: 400;">Objective-C is a general-purpose high-level language. It is a sister language of C. It is built on top of C with features from SmallTalk. This is an object-oriented programming language. It is used as the main language in the development of all apple-based digital devices for iOS, macOS, and watchOS among others. It has a large base of iOS and macOS users.</span></p>
+<p><strong>C++/C#</strong></p>
+<p><span style="font-weight: 400;">C++ and C# are both high-level Object Oriented programming language. C++ is the older and C# is the newer language. C# is more popular but both of them can be used to build a web as well as mobile applications.&nbsp; C++ is influenced by C and Simula67. While C# is also influenced by C and runs on a .NET framework. C# is ideal for building hosted and embedded apps. Both these languages are easy to learn and are a simple yet modern programming language.</span></p>
+<p><strong>Java</strong></p>
+<p><span style="font-weight: 400;">Java is the most widely used programming language for mobile app development. It is not a pure object oriented programming language as it does contain primitive types. It is designed to reduce dependencies. The apps written run on any JVM without regards to the computer architecture. It supports multiple programming paradigms. The syntax of Java is similar to C++.It is developed by Sun Microsystem which was taken over by Oracle. </span><span style="font-weight: 400;">Now, Oracles updates and maintains Java. It is portable and has high performance.</span><span style="font-weight: 400;">&nbsp;</span></p>
+<p><strong>Kotlin</strong><span style="font-weight: 400;">&nbsp;</span></p>
+<p><span style="font-weight: 400;">Kotlin is a statically typed programming language. It is cross-platform and interoperates with Java and Java Virtual Machine (JVM). It also compiles into Javascript. It has been officially selected by Google. Now, it has become Google's preferred language for mobile app development for android. Kotlin was influenced by C#, Java, ML, Python among others. It follows a functional style of programming. Many tools provide kotlin plug-in support. Android studio has official support for Kotlin. </span></p>
+<p><span style="font-weight: 400;">Kotlin in integrated with some of the common java build tools.Kotlin is a lightweight language and needs far less coding than its competitors.</span> <span style="font-weight: 400;">These languages can be directly used to code and create mobile applications. But it is time consuming and that lead to the development of frameworks and development kits. These frameworks reduces the amount of code written and allows for the code to be reused.</span> <span style="font-weight: 400;">&nbsp;</span></p>
+
+<h1 class="second text-center" style="margin-top:1rem"><span> Popular mobile app development frameworks</span></h1><br>
+
+{% comment %} <h3>Popular mobile app development frameworks</h3> {% endcomment %}
+<center><img src="{% static 'theblog/images/appdevimg2.jpg' %}" alt="Mobile app web development technologies" id="blogimg" class="img-responsive" alt="..." style="width:900px;height:400px"></center>
+
+
+{% comment %} <img class="aligncenter size-full wp-image-1805" style="display: block; margin-left: auto; margin-right: auto;" src="https://crampete-staticfiles.s3.ap-south-1.amazonaws.com/blogs/Blog-126/Mobile-app2.jpg" alt="Mobile app web development technologies" width="500" height="306" /> <strong>Apple Xcode</strong></h3> {% endcomment %}
+<p><strong>Xcode</strong>
+<br><span style="font-weight: 400;">Xcode is an IDE for MacOS. It contains a set of software development tools that are used to build softwares for iOS, MacOS, tvOS and watchOS. It is a freeware. Xcode supports programming in C++, C#, Objective-C, Java, Python, Ruby and Applescript. Xcode also has a built in interface builder that is used to build graphical user interface.&nbsp;</span></p>
+<p><strong>iOS SDK</strong> <br><span style="font-weight: 400;">The iOS SDK, previously known as iPhone SDK is a software development kit developed by Apple Inc for iOS. It is available for MacOS users. It is not available for windows users. It has an iPhone simulation to help you look and feel of the application in the device while still in development.&nbsp;</span></p>
+<p><strong>Android studio</strong></p>
+<p><span style="font-weight: 400;">It is the native IDE for Google android mobile app development. It is built on intelliJ software and designed specifically for app development. It is available in Windows OS, MacOS, and Linux. It is a freeware. It is written in Java, Kotlin and C++. It provides built in tools to catch usability and compatibility issues. It has a template tool to design based on common android components. It also has a layout editor for creating the UI. An Android Virtual Device is available as an emulator for running and debugging apps during the development process.&nbsp;</span></p>
+<p><strong>Android SDK</strong></p>
+<p><span style="font-weight: 400;">The Android software development kit is developed by Google. It is one of the official development tools for Android. It uses java, C++ and Kotlin as programming languages for the app development. It is available on windows 7and later, MacOS X&nbsp; and modern Linux systems. It has a debugger, and an emulator in addition to the other general software development tools.&nbsp;</span></p>
+<p><strong>React native</strong></p>
+<p><span style="font-weight: 400;">React native is a native mobile app development framework. It is written in Javascript. It allows mobile app to be built using its built-in components and APIs.&nbsp;</span> <span style="font-weight: 400;">It is different from the hybrids because it develops app on react framework using&nbsp;</span> <span style="font-weight: 400;">the same building blocks of UI similar to the official native applications in iOS and Android.&nbsp;</span> <span style="font-weight: 400;">Only the language used is Javascript instead of java and Kotlin. It is faster and it allows coding using native languages when required.&nbsp;</span></p>
+<h1 class="second text-center" style="margin-top:1rem"><span> RESOURCES SECTION</span></h1><br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                  https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Useful Application Development Resources</h3><hr>
+                  
+  <ul>
+ 
+ <li><span style="font-weight:bolder;color:white">1. Android Weekly</span> - Free newsletter that includes everything from articles, posts and videos and it also has Github libraries
+  <div class="card-button text-center">
+     <a href="http://androidweekly.net/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">2. iOS Dev Weekly </span>- Offers developers with a weekly email newsletter containing iOS development links, news, and commentary. It is a platform where experts can share their opnion and answer the questions.
+  <div class="card-button text-center">
+     <a href="http://iosdevweekly.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">3. Android Headlines </span> - This Is one of the leading sources of Android news for Android fans and developers.
+  <div class="card-button text-center">
+     <a href="https://www.androidheadlines.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">4. Daring Fireball </span> - Platform consists of articles that discuss Apple products and issues in related to consumer technology.
+  <div class="card-button text-center">
+     <a href="http://daringfireball.net/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">5. Android Open Source </span> - is an open source platform that offers the information and source code you need to create a custom variants of the Android Stacks and to port device and accessories to the platform.
+  <div class="card-button text-center">
+     <a href="https://source.android.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold"> Know More</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">6. Android Studio Tutorials </span> - Below are some Good Websites where you can learn Android Studio through Documentation.
+  <div class="card-button text-center">
+     <a href="https://www.geeksforgeeks.org/android-studio-tutorial/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">GeeksforGeeks</button></a>
+     <a href="https://www.javatpoint.com/android-tutorial" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Javatpoint</button></a>
+     <a href="https://www.tutorialspoint.com/android/android_studio.htm" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">TutorialsPoint</button></a>
+ </div>
+</li>
+<li><span style="font-weight:bolder;color:white">6. Flutter Tutorials </span> - Below are some Good Websites where you can learn Flutter through Documentation.
+  <div class="card-button text-center">
+     <a href="https://flutter.dev/docs/reference/tutorials" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Official Site</button></a>
+     <a href="https://www.javatpoint.com/flutter" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Javatpoint</button></a>
+     <a href="https://www.tutorialspoint.com/flutter/index.htm" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">TutorialsPoint</button></a>
+ </div>
+</li>
+  </ul>
+
+<br/></p>
+                    
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

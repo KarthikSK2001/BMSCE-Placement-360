@@ -1,0 +1,950 @@
+{% extends 'base.html' %}
+{% block title %}Resources Section{% endblock %}
+{% load static%}
+
+
+{% block content %}
+<title>
+        Data Science | Placement 360
+</title>
+<style>
+
+
+
+
+
+.timeline {
+  position: relative;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.timeline .timeline-container {
+  position: relative;
+  width: 100%;
+}
+
+.timeline .timeline-end,
+.timeline .timeline-start,
+.timeline .timeline-year {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.timeline .timeline-end p,
+.timeline .timeline-start p,
+.timeline .timeline-year p {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 30px 0;
+  text-align: center;
+  background: linear-gradient(#4F84C4, #00539C);
+  border-radius: 100px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.timeline .timeline-year {
+  margin: 30px 0;
+}
+
+.timeline .timeline-continue {
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+}
+
+.timeline .timeline-continue::after {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  margin-left: -1px;
+  background: #4F84C4;
+}
+
+.timeline .row.timeline-left,
+.timeline .row.timeline-right .timeline-date {
+  text-align: right;
+}
+
+.timeline .row.timeline-right,
+.timeline .row.timeline-left .timeline-date {
+  text-align: left;
+}
+
+.timeline .timeline-date {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 41px 0 0 0;
+}
+
+.timeline .timeline-date::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 45px;
+  background: linear-gradient(#4F84C4, #00539C);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.timeline .row.timeline-left .timeline-date::after {
+  left: -7px;
+}
+
+.timeline .row.timeline-right .timeline-date::after {
+  right: -7px;
+}
+
+.timeline .timeline-box,
+.timeline .timeline-launch {
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.timeline .timeline-launch {
+  width: 100%;
+  margin: 15px 0;
+  padding: 0;
+  border: none;
+  text-align: center;
+  background: transparent;
+}
+
+.timeline .timeline-box::after,
+.timeline .timeline-box::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline .row.timeline-left .timeline-box::after,
+.timeline .row.timeline-left .timeline-box::before {
+  left: 100%;
+}
+
+.timeline .row.timeline-right .timeline-box::after,
+.timeline .row.timeline-right .timeline-box::before {
+  right: 100%;
+}
+
+.timeline .timeline-launch .timeline-box::after,
+.timeline .timeline-launch .timeline-box::before {
+  left: 50%;
+  margin-left: -10px;
+}
+
+.timeline .timeline-box::after {
+  top: 26px;
+  border-color: transparent transparent transparent #ffffff;
+  border-width: 10px;
+}
+
+.timeline .timeline-box::before {
+  top: 25px;
+  border-color: transparent transparent transparent #dddddd;
+  border-width: 11px;
+}
+
+.timeline .row.timeline-right .timeline-box::after {
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.timeline .row.timeline-right .timeline-box::before {
+  border-color: transparent #dddddd transparent transparent;
+}
+
+.timeline .timeline-launch .timeline-box::after {
+  top: -20px;
+  border-color: transparent transparent #dddddd transparent;
+}
+
+.timeline .timeline-launch .timeline-box::before {
+  top: -19px;
+  border-color: transparent transparent #ffffff transparent;
+  border-width: 10px;
+  z-index: 1;
+}
+
+.timeline .timeline-box .timeline-icon {
+  position: relative;
+  width: 40px;
+  height: auto;
+  float: left;
+}
+
+.timeline .timeline-icon i {
+  font-size: 25px;
+  color: #4F84C4;
+}
+
+.timeline .timeline-box .timeline-text {
+  position: relative;
+  width: calc(100% - 40px);
+  float: left;
+}
+
+.timeline .timeline-launch .timeline-text {
+  width: 100%;
+}
+
+.timeline .timeline-text h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.timeline .timeline-text p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline .timeline-continue::after {
+    left: 40px;
+  }
+
+  .timeline .timeline-end,
+  .timeline .timeline-start,
+  .timeline .timeline-year,
+  .timeline .row.timeline-left,
+  .timeline .row.timeline-right .timeline-date,
+  .timeline .row.timeline-right,
+  .timeline .row.timeline-left .timeline-date,
+  .timeline .timeline-launch {
+    text-align: left;
+  }
+
+  .timeline .row.timeline-left .timeline-date::after,
+  .timeline .row.timeline-right .timeline-date::after {
+    left: 47px;
+  }
+
+  .timeline .timeline-box,
+  .timeline .row.timeline-right .timeline-date,
+  .timeline .row.timeline-left .timeline-date {
+    margin-left: 55px;
+  }
+
+  .timeline .timeline-launch .timeline-box {
+    margin-left: 0;
+  }
+
+  .timeline .row.timeline-left .timeline-box::after {
+    left: -20px;
+    border-color: transparent #ffffff transparent transparent;
+  }
+
+  .timeline .row.timeline-left .timeline-box::before {
+    left: -22px;
+    border-color: transparent #dddddd transparent transparent;
+  }
+
+  .timeline .timeline-launch .timeline-box::after,
+  .timeline .timeline-launch .timeline-box::before {
+    left: 30px;
+    margin-left: 0;
+  }
+}
+#list{list-style-type: decimal;padding:5px}
+h1.second {
+        font-weight: bolder;
+		color:black;
+        font-size:20px;
+        text-transform:uppercase;
+    }
+    
+    h1.second span {
+        position: relative;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border-bottom: 1px solid mediumseagreen;color:black
+    }
+    
+    h1.second span:after {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% - 1px);
+        margin-left: -10px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border-top: 1px solid mediumseagreen;
+    }
+    li{
+        font-weight:700;
+    }
+    .card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+
+
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px; box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+   
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center; text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;
+    margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #006fac;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+
+a{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+span,#content{
+    text-align:left;
+    list-style:decimal;
+}
+
+  
+}
+</style>
+<div class="title">
+ <h1 class="second text-center"><span> DATA SCIENCE ROADMAPS AND RESOURCES</span></h1><br>
+</div>
+<div class="timeline">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="timeline-container">
+          <div class="timeline-end">
+            <p>Start</p>
+          </div>
+          <div class="timeline-continue">
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+               Maths Fundamentals
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-calculator"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Algebra</li>
+                    <li>Calculus</li>
+                    <li>Optimisation</li>
+                    <li>Functions </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                  Data Wrangling
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-database"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Data Collection</li>
+                    <li>Cleaning</li>
+                    <li>Exploration </li>
+                   
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-database"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                 Data Wrangling
+                </p>
+              </div>
+            </div>
+
+ 
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                  Statistics
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Descriptive</li>
+                    <li>Inferential</li>
+                    <li>Differential</li>
+                    <li>Associative</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                  Programming
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-desktop"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Syntax</li>
+                    <li>Data Structures</li>
+                    <li>Control Structures </li>
+                   <li>OOPs </li>
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-desktop"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                Programming
+                </p>
+              </div>
+            </div>
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                  Data Visualisation
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-database"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Techniques</li>
+                    <li>Tableau</li>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+             <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                 Machine Learning
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-laptop"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Supervised</li>
+                    <li>Unsupervised</li>
+                    <li>Algorithms </li>
+                   
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-laptop"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                Machine Learning
+                </p>
+              </div>
+            </div>
+
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                  Data Science Competitions
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-list-alt"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Participation</li>
+                    <li>Projects</li>
+            
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                 Big Data
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-database"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Apache Spark</li>
+                    <li>Hadoop Ecosystem</li>
+                   
+                   
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-database"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                  Big Data
+                </p>
+              </div>
+            </div>
+
+            <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                 Deep Learning
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-server"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Neural Networks</li>
+                    <li>CNN, RNN</li>
+            
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-left">
+              <div class="col-md-6 d-md-none d-block">
+                <p class="timeline-date">
+                 Interview Preparation
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon d-md-none d-block">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                  <div class="timeline-text">
+                  <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Resume creation</li>
+                    <li>Interview Preparation</li>
+                
+                   
+                  </div>
+                  <div class="timeline-icon d-md-block d-none">
+                    <i class="fa fa-briefcase"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 d-md-block d-none">
+                <p class="timeline-date">
+                Interview Preparation
+                </p>
+              </div>
+            </div>
+             <div class="row timeline-right">
+              <div class="col-md-6">
+                <p class="timeline-date">
+                 Version Control
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="timeline-box">
+                  <div class="timeline-icon">
+                    <i class="fa fa-server"></i>
+                  </div>
+                  <div class="timeline-text">
+                    <h3>Level Wise</h3>
+                    <ul id="list">
+                    <li>Git</li>
+                    <li>Github</li>
+            <li>Bitbucket</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+            
+          <div class="timeline-start">
+            <p>Done</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                  https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}"  alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Deep Dive into Topics</h3><hr>
+                    <h3 class="card-name">1. Mathematics Fundamentals:</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*228Ab3Hc1-v3CJ0IjZWx1A.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Linear Algebra — Vector, Matrix Operations, Matrix Types, Eigen Values and Eigen Vectors, Set Theory, Functions, Logarithmic, Exponential Functions.
+ <li id="content"><span style="font-weight:bolder;color:white">Differential Calculus
+ <li id="content"><span style="font-weight:bolder;color:white">Permutation and Combination
+ <li id="content"><span style="font-weight:bolder;color:white">Optimisation Technique: Linear Programming, Maxima/Minima
+</span>
+ <ul>
+  <div class="card-button text-center">
+     <a href="https://www.coursera.org/specializations/mathematics-machine-learning" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Coursera </button></a>
+     </div>
+ </div>
+
+ 
+ <div class="card-body">
+                  
+                    <h3 class="card-name">2. Programming Language:</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*EM_R85P9oSjfedc6fCrXcQ.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Language fundamental syntax
+ <li id="content"><span style="font-weight:bolder;color:white">Data Types and Data Structured
+ <li id="content"><span style="font-weight:bolder;color:white">Control Structure — if-else statement, Loops, User defined functions
+ <li id="content"><span style="font-weight:bolder;color:white">OOPs Concepts
+</span>
+ <ul> 
+  <div class="card-button text-center">
+     <a href="https://www.coursera.org/specializations/python" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Coursera </button></a>
+     </div>
+ </div>
+
+     
+ <div class="card-body">
+                   
+                    <h3 class="card-name">3. Probability and Statistics:</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*_p7ZMYBKsnXU4VhpwNIF5Q.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Descriptive Statistics — Data Summarisation
+ <li id="content"><span style="font-weight:bolder;color:white">Measure of central tendency — Mean, Median, Mode
+ <li id="content"><span style="font-weight:bolder;color:white">Measure of shape — Skewness and Kurtosis.
+ <li id="content"><span style="font-weight:bolder;color:white">Parameter Estimation — Point Estimation and Confidence Interval
+</span>
+ <ul> 
+  <div class="card-button text-center">
+     <a href="http://www.um.edu.ar/math/montgomery.pdf" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Applied Statistics </button></a>
+     </div>
+ </div>
+
+ 
+ <div class="card-body">
+                   
+                    <h3 class="card-name">4. Data Collection and Wrangling:</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*j8y5Wdyeemmu0THG0HRoCg.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">LData Cleaning: Missing Value Treatment, Outlier Treatment, Data Validation
+ <li id="content"><span style="font-weight:bolder;color:white">Data Manipulation: Subsetting, Indexing, Groupby, Aggregation, Pivot tables
+ <li id="content"><span style="font-weight:bolder;color:white"> Data Merge, Reshaping, Creating new variables, Sorting.
+
+</span>
+
+ <ul>  <div class="card-button text-center">
+     {% comment %} <a href="https://bedford-computing.co.uk/learning/wp-content/uploads/2015/10/Python-for-Data-Analysis.pdf" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Python for Data Analysis </button></a> {% endcomment %}
+     </div></div>
+
+ 
+ <div class="card-body">
+                   
+                    <h3 class="card-name">5. Data Visualization</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*228Ab3Hc1-v3CJ0IjZWx1A.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Data Visualization Techniques and their Use
+ <li id="content"><span style="font-weight:bolder;color:white">Line chart, Boxplot, Histogram, Scatter plot
+ <li id="content"><span style="font-weight:bolder;color:white">Bubble chart, bar chart, Heatmap, world map
+</span>
+ <ul> <div class="card-button text-center">
+     <a href="https://bedford-computing.co.uk/learning/wp-content/uploads/2015/10/Python-for-Data-Analysis.pdf" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Reference </button></a>
+     </div> </div>
+
+       <div class="card-body">
+                   
+                    <h3 class="card-name">6. Machine Learning</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*Z4suIxll8gd0KofJB4f1Cw.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+ <li id="content"><span style="font-weight:bolder;color:white">Machine Learning Types — Supervised, Semi-supervised and Unsupervised
+ <li id="content"><span style="font-weight:bolder;color:white">Classification and Regression Problems
+ <li id="content"><span style="font-weight:bolder;color:white">Bias-Variance Tradeoff
+  <li id="content"><span style="font-weight:bolder;color:white">Underfitting and Overfitting Problems
+   <li id="content"><span style="font-weight:bolder;color:white">supervised and Unsupervised Algorithms
+</span>
+ <ul> <div class="card-button text-center">
+     <a href="https://www.coursera.org/learn/machine-learning" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Andrew Ng Course </button></a>
+     </div> </div>
+
+  <div class="card-body">
+                   
+                    <h3 class="card-name">7. Data Science Competition Participation</h3><hr>
+                    {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*oPN1chdmgswnl0hEs3Cwow.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+</span>
+ <ul> <div class="card-button text-center">
+     <a href="https://www.kaggle.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Kaggle </button></a>
+      <a href="https://datahack.analyticsvidhya.com/contest/all/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Analytics Vidhya </button></a>
+       <a href="https://www.drivendata.org/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Data Driven </button></a>
+     </div> </div>
+ <hr>
+      <div class="card-body">
+                   
+                    <h3 class="card-name">8. Resume Creation and Interview Preparation</h3><hr>
+                    
+
+<li id="content"><span style="font-weight:bolder;color:white">While writing about projects undertaken, mention business objective, solution approach, technologies and skills used and very importantly, impact on the business. Use numbers as much as you can.
+
+ <li id="content"><span style="font-weight:bolder;color:white">Write explicitly all the skills and technologies you are honestly comfortable with.
+
+</span>
+ <ul> </div>
+ 
+        <div class="card-body">
+                   
+                    <h3 class="card-name">9. Neural Network and Deep Learning</h3><hr>
+                        {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*uOjnHhfbd1a_-JFap_wUNw.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+<li id="content"><span style="font-weight:bolder;color:white">Neural Network analogy to Human Brain
+ <li id="content"><span style="font-weight:bolder;color:white">NN Representation, Activation functions, Backpropagation,
+<li id="content"><span style="font-weight:bolder;color:white">Training (weight optimization) using backpropagation
+ <li id="content"><span style="font-weight:bolder;color:white">Gradient descent, Stochastic gradient descent
+
+</span>
+ <ul><div class="card-button text-center">
+     <a href="https://www.kaggle.com/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Kaggle </button></a>
+      <a href="https://datahack.analyticsvidhya.com/contest/all/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Analytics Vidhya </button></a>
+       <a href="https://www.drivendata.org/" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Data Driven </button></a>
+     </div> </div>
+  
+   <div class="card-body">
+                   
+                    <h3 class="card-name">10. Big Data</h3><hr>
+                        {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*J5gk4oKwz1inhMicnmcTZg.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+<li id="content"><span style="font-weight:bolder;color:white">Big Data Fundamentals
+ <li id="content"><span style="font-weight:bolder;color:white">Hadoop Ecosystem — Cluster, HDFS, MapReduce, Hive, Pig
+<li id="content"><span style="font-weight:bolder;color:white">Apache Spark — Streaming, SQL, Machine Learning (ML), and Graph API’s
+ <li id="content"><span style="font-weight:bolder;color:white">Pyspark/SparkR/Scala Language/ Java Language
+
+</span>
+ <ul><div class="card-button text-center">
+     <a href="https://www.coursera.org/specializations/big-data" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Coursera </button></a>
+       </div> </div>
+
+  <div class="card-body">
+                   
+                    <h3 class="card-name">11. Version Control System</h3><hr>
+                        {% comment %} <img id="bookimg" src="https://miro.medium.com/max/630/1*netmm51TANLzHDhShjUadw.png" class="rounded mx-auto d-block" alt="..."> {% endcomment %}
+
+
+<li id="content"><span style="font-weight:bolder;color:white">Creating Repositories and clone it.
+ <li id="content"><span style="font-weight:bolder;color:white">Basic Git commands like init, add, commit.
+<li id="content"><span style="font-weight:bolder;color:white">Creating branches, push, pull to the repository.
+
+</span>
+ <ul><div class="card-button text-center">
+     <a href="https://git-scm.com/docs/gittutorial" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Git Documentation </button></a>
+       </div> </div>
+ 
+            </div>
+        </div>
+</div>
+
+                    
+            
+{% endblock %}

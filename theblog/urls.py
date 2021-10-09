@@ -1,0 +1,35 @@
+from django.urls import path
+#from . import views
+from .views import HomeView, ArticleDetailView,ArticleDetailIntView, LikeIntView,AddCommentIntView,AddPostView,UpdatePostIntView,AddIntPostView, DeletePostIntView,UpdatePostView, DeletePostView, AddCategoryView, CategoryView, CategoryListView, LikeView, AddCommentView,Contact,CategoryIntListView,CategoryIntView,AddCategoryIntView,Resources,Links,Pdfs,WebDev,AppDev,CyberSecurity,Aptitude,DataScience
+ 
+urlpatterns = [
+    #path('', views.home, name="home"),
+    path('', HomeView.as_view(), name="home"),
+    path('article-placements/<int:pk>', ArticleDetailView.as_view(), name='article-detail'),
+    path('article-internship/<int:pk>', ArticleDetailIntView.as_view(), name='article_int-detail'),
+    path('add-experience/Placements', AddPostView.as_view(), name='add_post'),
+    path('add-experience/Internships', AddIntPostView.as_view(), name='add_post_int'),
+    path('contact/', Contact, name='contact'),
+    path('resources/', Resources, name='resources'),
+    path('links/', Links, name='links'),
+    path('pdfs/', Pdfs, name='pdfs'),
+    path('aptitude/', Aptitude, name='aptitude'),
+    path('development/Web-dev-roadmap', WebDev, name='webdev'),
+    path('development/App-dev-roadmap/', AppDev, name='appdev'),
+    path('development/cyber-security-roadmap/', CyberSecurity, name='cybersecurity'),
+    path('development/data-science-roadmap/', DataScience, name='datascience'),
+    path('add_category/', AddCategoryView.as_view(), name='add_category'),
+    path('add_category_int/', AddCategoryIntView.as_view(), name='add_category_int'),
+    path('article-placements/edit/<int:pk>', UpdatePostView.as_view(), name='update_post'),
+    path('article-internship/edit/<int:pk>', UpdatePostIntView.as_view(), name='update_post_int'),
+    path('article-placements/<int:pk>/delete', DeletePostView.as_view(), name='delete_post'),
+    path('article-internship/<int:pk>/delete', DeletePostIntView.as_view(), name='delete_post_int'),
+    path('category/<str:cats>/', CategoryView, name='category'),
+    path('placements/year/', CategoryListView, name='category-list'),
+    path('categoryint/<str:cats_int>/', CategoryIntView, name='categoryint'),
+    path('Internships/year/', CategoryIntListView, name='category-int-list'),
+    path('like/<int:pk>', LikeView, name='like_post'),
+    path('like_post_int/<int:pk>', LikeIntView, name='like_post_int'),
+    path('article-placements/<int:pk>/comment/', AddCommentView.as_view(), name='add_comment'),
+    path('article-internships/<int:pk>/comment/', AddCommentIntView.as_view(), name='add_comment_int'),
+    ]

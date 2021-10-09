@@ -1,0 +1,388 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<title>
+        Materials | Placement 360
+</title>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: white;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; color: white;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888); color: white;
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+
+textarea { font-size: 16px; 
+font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+   body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  min-height: calc(100vh - var(--vh-offset, 0px));
+
+  overflow-x: hidden;
+  font-weight: 400;
+  top: 0;
+  color: #252525;
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+}
+
+
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  align-self: flex-start;
+}
+
+
+
+.card{
+    background-color: #231e39;
+    color:#b3b8cd;
+    border-radius: 5px;
+    max-width: 1150px;
+   transition: box-shadow 0.2s ease-in-out, transform 0.35s ease-in-out;
+
+box-shadow:  32px 32px 44px #9b9b9b,
+             -32px -32px 44px #ffffff;
+    {% comment %} box-shadow: 0 10px 20px -10px rgba(0,0,0,.75); {% endcomment %}
+}
+
+.card:hover {
+  box-shadow: 0 11px 11px 0 rgba(0, 0, 0,.16);
+  transform: translateY(-5px);
+}
+
+.card-header{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 160px;
+    border-radius: 5px 5px 0 0;
+    padding: 0 15px;box-shadow:  8px 8px 16px #9b9b9b,
+             -8px -8px 16px #ffffff;
+}
+
+.card-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+   margin-top:3.5rem;
+    
+    background-color: white;
+    overflow: hidden;
+    transform: translateY(calc(50% + 40px));
+}
+
+.card-photo img{
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 0 15px 15px;
+    text-align: center;
+}
+
+.card-name{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 25px;
+    text-align:center;
+     text-shadow: 
+      0 -1px 0 #fff, 
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.card-description{
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 30px;
+    font-weight:bolder;
+    margin-bottom: 30px;
+}
+
+.card-button{
+    
+    margin: 10px 0 30px;
+}
+
+.card-button button:first-of-type{
+    margin-right: 10px;box-shadow:  5px 5px 7px #c1c1c1,
+             -5px -5px 7px #ffffff;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin:1rem;
+    text-align: center;
+    transition: all .5s ease;
+    cursor: pointer; color: white;
+}
+.btn-primary,
+.btn-outline-primary{
+    border:1px solid #03bfbc;margin:1rem;
+}
+
+.btn-primary,
+.btn-outline-primary:hover{
+    color: #231e39;
+    background-color: #03bfbc;margin:1rem;
+}
+
+.btn-primary:hover,
+.btn-outline-primary{
+    background-color: transparent;
+    color: #03bfbc;
+}
+
+
+.card-social{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.card-social li{
+    padding-right: 20px;
+    transition: all .5s ease;
+}
+
+.card-social li:last-of-type{
+    padding-right: 0;
+}
+
+.card-social li a{
+    font-size: 20px;
+    color:#b3b8cd;
+}
+
+.card-social li a:hover{
+    color: #03bfbc;
+}
+a{
+     font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+</style>
+
+</head>
+<h1 class="second text-center"><span> SOME IMPORTANT CC MATERIALS/PDFS </span></h1><br><br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                  https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}"  alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Data Structures and Algorithms Made Easy </h3><hr>
+                    <p class="card-description">By, Narasimha Karumanchi
+<br/></p>
+ <li><span style="font-weight:bolder;color:white">"Data Structures And Algorithms Made Easy: Data Structures and Algorithmic Puzzles" is a book that offers solutions to complex data structures and algorithms. There are multiple solutions for each problem and the book is coded in C/C++, it comes handy as an interview and exam guide for computer scientists.</span>
+                   <ul>
+ 
+ 
+
+
+ <div class="card-button text-center">
+     <a href="https://cutt.ly/LEHsRAR" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Download </button></a>
+ </div>
+
+  </ul>
+      
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+                    https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}"  alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Cracking the Coding Interview</h3><hr>
+                    <p class="card-description">By, Gayle Laakmann McDowell
+<br/></p>
+ <li><span style="font-weight:bolder;color:white">
+Learn how to uncover the hints and hidden details in a question, discover how to break down a problem into manageable chunks, develop techniques to unstick yourself when stuck, learn (or re-learn) core computer science concepts, and practice on 189 interview questions and solutions.</span>
+   
+                   <ul>
+ 
+
+
+
+
+ <div class="card-button text-center">
+     <a href="https://cutt.ly/JEHdHEV" target="_blank"> <button class="btn btn-primary" style="color:white;font-weight:bold">Download</button></a>
+ </div>
+
+  </ul>
+      
+                </div>
+            </div>
+        </div>
+</div>
+<div class="container">
+        <div>
+            <div class="card">
+                <div class="card-header" style="background-image: url(
+ https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class="card-photo">
+                        <img src="{% static 'theblog/images/logo.png' %}"  alt="">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-name">Competitive Programmer’s Handbook  </h3><hr>
+                    <p class="card-description">By, Antti Laaksonen
+<br/></p> <li><span style="font-weight:bolder;color:white">This is the best book for beginners , in the complex field of "competitive Programming".This is a critical field and this book is specially written to improve skill to coder gradually and consistently. It will enhance your skill , and every beginner should have this .</span>
+
+
+                   <ul>
+ 
+
+
+
+
+ <div class="card-button text-center">
+     <a href="https://cutt.ly/5EHsSxw" target="_blank" > <button class="btn btn-primary" style="color:white;font-weight:bold">Download</button></a>
+ </div>
+
+  </ul>
+      
+                </div>
+            </div>
+        </div>
+</div>
+
+            </div>
+        </div>
+</div>
+{% endblock %}

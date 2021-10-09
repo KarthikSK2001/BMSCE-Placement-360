@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <title>
+       Post Experience | Placement 360
+  </title>
+<style>
+input[type="text"],
+input[type="date"],
+input[type="file"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,.form-control  {
+    border: 1px solid #0088cc;
+    display: block;
+    margin: 10px auto;
+    padding: 2%;
+    width: 100%;
+	color:black
+}
+textarea{
+	   width: 100%;
+}
+.form-control-custom
+{
+   border: 1px solid #0088cc;
+    display: block;
+    margin: 10px auto;
+    padding: 1%;
+    width: 100%;
+ border-radius:2px;
+}
+label{
+	font-weight:bolder;
+	text-transform:Capitalize;
+	margin-top:5px
+}
+option{
+	color:black;
+	font-weight:bolder
+}
+
+
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: #fff;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888);
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+</style>
+{% if user.is_authenticated %}
+
+<h1 class="second" style="font-size: 23px;text-align: left;color:black"><span>POST YOUR INTERNSHIP EXPERIENCE</span></h1>
+	<br/>
+
+
+	<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+		
+<p><label for="id_student_Name">Student Name <span style="color: crimson;">*</span></label> <input type="text" name="student_Name" class="form-control" maxlength="255" required id="id_student_Name" placeholder="John Doe"></p>
+ <p class="info"><span style="color: crimson;">*</span> (Enter the Company's Name in "Capitalised Format". Eg-Goldman Sachs) </p>			
+<p><label for="id_company">Company <span style="color: crimson;">*</span></label> <input type="text" name="company" class="form-control" maxlength="255" required id="id_company" placeholder="Goldman Sachs"></p>
+ <p class="info"><span style="color: crimson;">*</span> (Enter the Company's Name in "Capitalised Format". Eg-Goldman Sachs) </p>
+<p><label for="id_Company_Logo">Company Logo <span style="color: crimson;">*</span></label> <input type="file" name="Company_Logo" accept="image/*" id="id_Company_Logo"></p>
+ <p class="info"><span style="color: crimson;">*</span> (Upload the Company's Logo or Official Image) </p>
+<p><label for="id_year_of_hiring">Year of hiring <span style="color: crimson;">*</span></label> <select name="year_of_hiring" class="form-control-custom" maxlength="255" id="id_year_of_hiring" placeholder="2020">
+  <option value="2019" selected>2019</option>
+
+  <option value="2020">2020</option>
+
+  <option value="2021">2021</option>
+
+  <option value="2022">2022</option>
+
+  <option value="2023">2023</option>
+
+  <option value="2024">2024</option>
+
+</select></p>
+ <p class="info"><span style="color: crimson;">*</span> (Select the Year that you got the Offer) </p>
+<p><label for="id_hiring_type">Hiring type <span style="color: crimson;">*</span></label> <input type="text" name="hiring_type" class="form-control" maxlength="255" required id="id_hiring_type" placeholder="FTE"></p>
+ <p class="info"><span style="color: crimson;">*</span> (Enter The Hiring Type Eg - (Internship/FTE/IT+FTE)) </p>
+<p><label for="id_compensation_Details">Compensation Details <span style="color: crimson;">*</span></label> <input type="text" name="compensation_Details" class="form-control" maxlength="255" required id="id_compensation_Details" placeholder="13LPA CTC, 10LPA BASE"></p>
+ <p class="info"><span style="color: crimson;">*</span> (Fill in the detailed Description of Compensation with Base Salary) </p>
+<p><label for="id_number_hired_with_role">Number hired with role <span style="color: crimson;">*</span> </label> <input type="text" name="number_hired_with_role" class="form-control" maxlength="255" required id="id_number_hired_with_role" placeholder="3 For Software Developer"></p>
+ <p class="info"><span style="color: crimson;">*</span> (Total Students Hired From Campus with Hiring Type. Eg - 2 For Devops Role) </p>
+<p>
+
+<input type="hidden" name="author" class="form-control" value="" id="elder"></p>
+
+			
+	</div> 
+
+
+  <head>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+  </head>
+  <body> 
+<p>
+ <label for="id_Interview_Rounds_with_detailed_description" style="margin-bottom:1rem">Interview Rounds with detailed description <span style="color: crimson;">*</span></label> <div class="django-ckeditor-widget" data-field-id="id_Interview_Rounds_with_detailed_description" style="display: inline-block;" placeholder="Enter Detailed Interview Rounds Description Here...">
+    <textarea cols="40" class="summernote" id="id_Interview_Rounds_with_detailed_description" name="Interview_Rounds_with_detailed_description" rows="10" data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_Interview_Rounds_with_detailed_description" data-type="ckeditortype"></textarea>
+
+</div></p>
+    <script>
+      
+    </script>
+  </body>
+  
+  <p class="info" style="margin-top:1rem"><span style="color: crimson;">*</span> (Enter each Round and Describe in detail the Process and Question asked) </p>
+</html>
+
+  <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+  </head>
+<body> 
+<p>
+ <label for="id_Additional_Topics" style="margin-bottom:1rem">Additional Topics And Students Overall Experience <span style="color: crimson;">*</span></label> <div class="django-ckeditor-widget" data-field-id="id_Additional_Topics" style="display: inline-block;" placeholder="Enter Detailed Interview Rounds Description Here...">
+    <textarea cols="40" class="summernote" id="id_Additional_Topics" name="Additional_Topics" rows="10" data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_Additional_Topics" data-type="ckeditortype"></textarea>
+
+</div></p>
+    <script>
+      
+    </script>
+  </body>
+  
+  <p class="info" style='margin-top:1rem'><span style="color: crimson;">*</span> (Enter Your final Experience with Important Topics to Focus on) </p>
+</html>
+	 <button class="btn btn-primary" style="margin-top:1rem">Post My Experience</button>
+	<script>
+		var name = "{{ user.id }}";
+		
+		document.getElementById("elder").value = name;
+
+		$('textarea.summernote').summernote({
+        placeholder: 'Type Here....',
+        tabsize: 2,
+        height: 100,
+  		toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'italic', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'hr']],
+        //['view', ['fullscreen', 'codeview']],
+        ['help', ['help']]
+      ],
+      });
+	</script>
+
+{% else %}
+
+You're not allowed here! (and you know it...)
+
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,149 @@
+
+
+{% extends 'base.html' %}
+{% block title %}Edit Blog Post{% endblock %}
+{% block content %}
+   <title>
+        Edit-Post | Placement 360
+    </title>
+    <style>
+input[type="text"],
+input[type="date"],
+input[type="file"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,.form-control  {
+    border: 1px solid #0088cc;
+    display: block;
+    margin: 10px auto;
+    padding: 2%;
+    width: 100%;
+	color:black
+}
+textarea{
+	   width: 100%;
+}
+label{
+	font-weight:bolder;
+	text-transform:Capitalize;
+	margin-top:5px
+}
+option{
+	color:black;
+	font-weight:bolder
+}
+.btn, .btn:hover {
+  color: #88a5b1;
+}
+
+.btn-primary, .btn-primary:hover, .btn-info, .btn-info:hover, .btn-success, .btn-success:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-inverse, .btn-inverse:hover {
+  color: #fff;
+}
+
+.btn {
+  font: 18px Helvetica;
+  padding: 12px 22px 10px;
+  margin: 0;
+  border: none;
+  border-bottom: 3px #aacedd solid;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+  background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+  background-image: linear-gradient(#ffffff, #f8f8f8);
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+.btn-primary {
+  border-bottom: 3px #000609 solid;
+  background-image: -moz-linear-gradient(#0079bb, #005888);
+  background-image: -webkit-linear-gradient(#0079bb, #005888);
+  background-image: linear-gradient(#0079bb, #005888);
+}
+.btn-primary:hover {
+  background-image: -moz-linear-gradient(#009aee, #005888);
+  background-image: -webkit-linear-gradient(#009aee, #005888);
+  background-image: linear-gradient(#009aee, #005888);
+}
+
+
+
+.btn-large {
+  font-size: 18px;
+  padding: 12px 22px 10px;
+}
+
+
+ h1.second {
+        font-weight: bolder;
+		color:black
+    }
+    
+    h1.second span {
+        position: relative;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 10px;
+        border-bottom: 1px solid mediumseagreen;color:black
+    }
+    
+    h1.second span:after {
+        content: '';
+        position: absolute;
+        bottom: calc(-100% - 1px);
+        margin-left: -10px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border-top: 1px solid mediumseagreen;
+    }
+
+
+
+</style>
+{% if user.is_authenticated %}
+	{% if user.id == post.author.id %}
+
+	<h1 class="second" style="font-size: 23px;text-align: left;color:black"><span>UPDATE YOUR INTERVIEW EXPERIENCE</span></h1>
+	<br/>
+		<br/>
+
+		<div class="form-group">
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.media }}
+				{{ form.as_p }}
+				<button class="btn btn-primary">Update Post</button>
+				<br><br>
+		</div>
+	{% else %}
+			You're not allowed here! (and you know it...)
+	{% endif %}		
+{% else %}
+
+You're not allowed here! (and you know it...)
+
+{% endif %}
+
+
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'description',
+    {
+        toolbar : 'Basic', /* this does the magic */
+        uiColor : '#9AB8F3'
+    });
+</script>
+{% endblock %}
