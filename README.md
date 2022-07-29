@@ -15,4 +15,4 @@ This website was developed In order to provide proper Guidance and Resources to 
 <h3>Link - <a href="https://placement360.pythonanywhere.com/">[https://placement360.pythonanywhere.com/]</a></h3>
 
 <h2>Walkthrough Video</h2>
-<h3>Link - <a href="https://www.youtube.com/watch?v=lbBNr6m9gfM">[Watch Video]</a></h3>
+<h3>Link - <a href="https://www.youtube.com/watch?v=e7QvBYbySow&t">[Watch Video]</a></h3>
